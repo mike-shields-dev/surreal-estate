@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from '../components/App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import App from "../components/App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const titleElement = screen.getByText(/surreal estate/i);
-  expect(titleElement).toBeInTheDocument();
+describe("App", () => {
+  it("renders the nav bar", () => {
+    render(<App />);
+    const navBarEl = screen.getByTestId("navbar");
+
+    expect(navBarEl).toBeInTheDocument();
+  });
 });
