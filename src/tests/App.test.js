@@ -17,25 +17,33 @@ describe("App", () => {
     expect(navBarEl).toBeInTheDocument();
   });
 
-  it("clicking the 'View Properties' link, renders the Properties component", async () => {
-    const { getByRole } = render(<AppWithBrowserRouter />);
-    const linkEl = getByRole("link", { name: "View Properties" });
+  describe("App client side routing", () => {
+    it("renders Properties component as root path", () => {
+      render(<AppWithBrowserRouter />);
 
-    expect(screen.queryByText("Properties Page")).not.toBeInTheDocument();
+      expect(screen.queryByText("Properties Page")).toBeInTheDocument();
+    });
 
-    fireEvent.click(linkEl);
+    it("selecting each hyperlink, renders the correct routed component", () => {
+      const { getByRole } = render(<AppWithBrowserRouter />);
 
-    expect(screen.queryByText("Properties Page")).toBeInTheDocument();
-  });
+      const addPropertyLinkEl = getByRole("link", { name: "Add Property" });
+      const viewPropertiesLinkEl = getByRole("link", {
+        name: "View Properties",
+      });
 
-  it("clicking the 'Add Property' link, renders the AddProperty component", async () => {
-    const { getByRole } = render(<AppWithBrowserRouter />);
-    const linkEl = getByRole("link", { name: "Add Property" });
+      expect(screen.queryByText("Properties Page")).toBeInTheDocument();
+      expect(screen.queryByText("Add Property Page")).not.toBeInTheDocument();
 
-    expect(screen.queryByText("Add Property Page")).not.toBeInTheDocument();
+      fireEvent.click(addPropertyLinkEl);
 
-    fireEvent.click(linkEl);
+      expect(screen.queryByText("Properties Page")).not.toBeInTheDocument();
+      expect(screen.queryByText("Add Property Page")).toBeInTheDocument();
 
-    expect(screen.queryByText("Add Property Page")).toBeInTheDocument();
+      fireEvent.click(viewPropertiesLinkEl);
+
+      expect(screen.queryByText("Properties Page")).toBeInTheDocument();
+      expect(screen.queryByText("Add Property Page")).not.toBeInTheDocument();
+    });
   });
 });

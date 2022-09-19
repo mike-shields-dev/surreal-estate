@@ -23,12 +23,12 @@ describe("Navbar", () => {
     expect(logoEl).toBeInTheDocument();
   });
 
-  it("renders a 'View Properties' hyperlink with a href of '/properties'", () => {
+  it("renders a 'View Properties' hyperlink with a href of '/'", () => {
     const { getByRole } = render(<NavBarWithBrowserRouter />);
     const linkEl = getByRole("link", { name: "View Properties" });
 
     expect(linkEl).toBeInTheDocument();
-    expect(linkEl).toHaveAttribute("href", "/properties");
+    expect(linkEl).toHaveAttribute("href", "/");
   });
 
   it("renders an 'Add Property' hyperlink with a href of '/add-property'", () => {

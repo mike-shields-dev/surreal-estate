@@ -13,7 +13,7 @@ const NavBar = () => {
       />
       <ul className={styles.navbar__links}>
         <li className={styles["navbar__links-item"]}>
-          <Link to="/properties">View Properties</Link>
+          <Link to="/">View Properties</Link>
         </li>
         <li className={styles["navbar__links-item"]}>
           <Link to="/add-property">Add Property</Link>
