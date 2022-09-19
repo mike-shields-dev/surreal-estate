@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
   return (
-    <div className={styles.navbar} data-testid="navbar">
+    <nav className={styles.navbar} data-testid="navbar">
       <img
         className={styles.navbar__logo}
         data-testid="company-logo"
@@ -12,13 +13,13 @@ const NavBar = () => {
       />
       <ul className={styles.navbar__links}>
         <li className={styles["navbar__links-item"]}>
-          <a href="index.html">View Properties</a>
+          <Link to="/properties">View Properties</Link>
         </li>
         <li className={styles["navbar__links-item"]}>
-          <a href="index.html">Add Property</a>
+          <Link to="/add-property">Add Property</Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 };
 
