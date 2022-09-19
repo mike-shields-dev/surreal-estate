@@ -22,5 +22,6 @@
 }
 
 .navbar__links-item a {
+  color: inherit;
   text-decoration: none;
 }
