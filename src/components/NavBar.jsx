@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
@@ -11,12 +11,26 @@ const NavBar = () => {
         src="/surreal-logo.png"
         alt="surreal estate logo"
       />
-      <ul className={styles.navbar__links}>
-        <li className={styles["navbar__links-item"]}>
-          <Link to="/">View Properties</Link>
+      <ul className={styles["navbar__links-list"]}>
+        <li className={styles["navbar__links-list-item"]}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles["navbar__link--active"] : styles.navbar__link
+            }
+            to="/properties"
+          >
+            View Properties
+          </NavLink>
         </li>
-        <li className={styles["navbar__links-item"]}>
-          <Link to="/add-property">Add Property</Link>
+        <li className={styles["navbar__links-list-item"]}>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles["navbar__link--active"] : styles.navbar__link
+            }
+            to="add-property"
+          >
+            Add Property
+          </NavLink>
         </li>
       </ul>
     </nav>

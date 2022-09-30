@@ -9,19 +9,23 @@
   width: 10rem;
 }
 
-.navbar__links {
+.navbar__links-list {
   display: flex;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.navbar__links-item {
+.navbar__links-list-item {
   display: inline-block;
   padding-left: 2em;
 }
 
-.navbar__links-item a {
+.navbar__link {
   color: inherit;
   text-decoration: none;
+}
+
+.navbar__link--active {
+  color: red;
 }

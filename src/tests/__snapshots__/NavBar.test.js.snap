@@ -13,21 +13,23 @@ exports[`Navbar matches snapshot 1`] = `
       src="/surreal-logo.png"
     />
     <ul
-      class="navbar__links"
+      class="navbar__links-list"
     >
       <li
-        class="navbar__links-item"
+        class="navbar__links-list-item"
       >
         <a
-          href="/"
+          class="navbar__link"
+          href="/properties"
         >
           View Properties
         </a>
       </li>
       <li
-        class="navbar__links-item"
+        class="navbar__links-list-item"
       >
         <a
+          class="navbar__link"
           href="/add-property"
         >
           Add Property

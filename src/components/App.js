@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "../styles/app.css";
 import AddProperty from "./AddProperty";
 import NavBar from "./NavBar";
@@ -11,8 +11,9 @@ const App = () => {
       <NavBar />
       <h2>Surreal Estate</h2>
       <Routes>
-        <Route path="/" element={<Properties />} />
+        <Route path="/properties" element={<Properties />} />
         <Route path="/add-property" element={<AddProperty />} />
+        <Route path="*" element={<Navigate to="/properties" />} />
       </Routes>
     </div>
   );
