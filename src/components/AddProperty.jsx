@@ -3,6 +3,7 @@ import styles from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
 import TextBox from "./TextBox";
+import addProperty from "../requests/addProperty";
 
 const cities = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
 const types = [
@@ -29,8 +30,9 @@ const initialState = {
 const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
 
-  const handleAddProperty = (event) => {
+  const handleAddProperty = async (event) => {
     event.preventDefault();
+    addProperty(fields);
   };
 
   const handleFieldChange = (event) => {
