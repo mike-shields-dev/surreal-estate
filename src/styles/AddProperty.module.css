@@ -1,0 +1,7 @@
+.add-property {
+    padding: 1rem;
+}
+
+.add-property__form {
+    display: grid;
+}

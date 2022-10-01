@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinButton matches snapshot 1`] = `
+<DocumentFragment>
+  <label
+    for="bedrooms"
+  >
+    Bedrooms
+  </label>
+  <input
+    id="bedrooms"
+    name="bedrooms"
+    step="1"
+    type="number"
+    value="0"
+  />
+</DocumentFragment>
+`;

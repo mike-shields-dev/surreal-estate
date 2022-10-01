@@ -37,8 +37,8 @@ describe("App", () => {
 
       fireEvent.click(addPropertyLinkEl);
 
-      expect(screen.queryByText("Properties Page")).not.toBeInTheDocument();
       expect(screen.queryByText("Add Property Page")).toBeInTheDocument();
+      expect(screen.queryByText("Properties Page")).not.toBeInTheDocument();
 
       fireEvent.click(viewPropertiesLinkEl);
 

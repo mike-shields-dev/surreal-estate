@@ -18,6 +18,15 @@
   },
   "plugins": ["react"],
   "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ],
     "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],
     "react/jsx-filename-extension": [
