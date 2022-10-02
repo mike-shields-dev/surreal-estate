@@ -3,6 +3,7 @@ import styles from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
 import TextBox from "./TextBox";
+import Alert from "./Alert";
 import addProperty from "../requests/addProperty";
 
 const cities = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
@@ -16,6 +17,10 @@ const types = [
 ];
 
 const initialState = {
+  alert: {
+    message: "",
+    isSuccess: false,
+  },
   fields: {
     title: "",
     city: cities[0],
@@ -29,10 +34,17 @@ const initialState = {
 
 const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
+  const [alert, setAlert] = useState(initialState.alert);
 
   const handleAddProperty = async (event) => {
     event.preventDefault();
-    addProperty(fields);
+    const isPropertyAdded = await addProperty(fields);
+    setAlert({
+      message: isPropertyAdded
+        ? "Property added"
+        : "Something went wrong, please try again later",
+      isSuccess: isPropertyAdded,
+    });
   };
 
   const handleFieldChange = (event) => {
@@ -44,6 +56,7 @@ const AddProperty = () => {
     <>
       <p>Add Property Page</p>
       <div className={styles["add-property"]}>
+        <Alert {...alert} />
         <form
           className={styles["add-property__form"]}
           name="add property"

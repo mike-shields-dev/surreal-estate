@@ -133,7 +133,7 @@ exports[`AddProperty matches snapshot 1`] = `
         </option>
       </select>
       <label
-        for="title"
+        for="email"
       >
         Email
       </label>

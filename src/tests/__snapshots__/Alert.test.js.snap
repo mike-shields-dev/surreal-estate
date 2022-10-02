@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="alert--success"
+    data-testid="alert"
+  >
+    Success!
+  </div>
+</DocumentFragment>
+`;

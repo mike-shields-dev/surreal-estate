@@ -4,7 +4,7 @@ import ComboBox from "../components/ComboBox";
 
 const values = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
 const props = {
-  defaultValue: values[0],
+  value: values[0],
   label: "City",
   name: "city",
   onChange: jest.fn(),

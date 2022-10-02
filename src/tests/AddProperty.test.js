@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import AddProperty from "../components/AddProperty";
 
 const renderAddProperty = () => render(<AddProperty />);
@@ -72,7 +72,6 @@ describe("AddProperty", () => {
   });
 
   it("renders a form submit button", () => {
-    
     renderAddProperty();
 
     expect(
