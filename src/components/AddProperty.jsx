@@ -53,71 +53,68 @@ const AddProperty = () => {
   };
 
   return (
-    <>
-      <p>Add Property Page</p>
-      <div className={styles["add-property"]}>
-        <Alert {...alert} />
-        <form
-          className={styles["add-property__form"]}
-          name="add property"
-          onSubmit={handleAddProperty}
-        >
-          <TextBox
-            label="Title"
-            name="title"
-            onChange={handleFieldChange}
-            type="text"
-            value={fields.title}
-          />
-          <ComboBox
-            label="Type"
-            name="type"
-            onChange={handleFieldChange}
-            value={fields.type}
-            values={types}
-          />
-          <SpinButton
-            label="Bedrooms"
-            min={0}
-            name="bedrooms"
-            onChange={handleFieldChange}
-            step={1}
-            value={fields.bedrooms}
-          />
-          <SpinButton
-            label="Bathrooms"
-            min={0}
-            name="bathrooms"
-            onChange={handleFieldChange}
-            step={1}
-            value={fields.bathrooms}
-          />
-          <SpinButton
-            label="Price £"
-            min={0}
-            name="price"
-            onChange={handleFieldChange}
-            step={5000}
-            value={fields.price}
-          />
-          <ComboBox
-            label="City"
-            name="city"
-            onChange={handleFieldChange}
-            value={fields.city}
-            values={cities}
-          />
-          <TextBox
-            label="Email"
-            name="email"
-            onChange={handleFieldChange}
-            value={fields.email}
-            type="email"
-          />
-          <button type="submit">Add</button>
-        </form>
-      </div>
-    </>
+    <div className={styles["add-property"]} data-testid="add-property">
+      <Alert {...alert} />
+      <form
+        className={styles["add-property__form"]}
+        name="add property"
+        onSubmit={handleAddProperty}
+      >
+        <TextBox
+          label="Title"
+          name="title"
+          onChange={handleFieldChange}
+          type="text"
+          value={fields.title}
+        />
+        <ComboBox
+          label="Type"
+          name="type"
+          onChange={handleFieldChange}
+          value={fields.type}
+          values={types}
+        />
+        <SpinButton
+          label="Bedrooms"
+          min={0}
+          name="bedrooms"
+          onChange={handleFieldChange}
+          step={1}
+          value={fields.bedrooms}
+        />
+        <SpinButton
+          label="Bathrooms"
+          min={0}
+          name="bathrooms"
+          onChange={handleFieldChange}
+          step={1}
+          value={fields.bathrooms}
+        />
+        <SpinButton
+          label="Price £"
+          min={0}
+          name="price"
+          onChange={handleFieldChange}
+          step={5000}
+          value={fields.price}
+        />
+        <ComboBox
+          label="City"
+          name="city"
+          onChange={handleFieldChange}
+          value={fields.city}
+          values={cities}
+        />
+        <TextBox
+          label="Email"
+          name="email"
+          onChange={handleFieldChange}
+          value={fields.email}
+          type="email"
+        />
+        <button type="submit">Add</button>
+      </form>
+    </div>
   );
 };
 

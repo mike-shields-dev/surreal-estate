@@ -2,11 +2,9 @@
 
 exports[`AddProperty matches snapshot 1`] = `
 <DocumentFragment>
-  <p>
-    Add Property Page
-  </p>
   <div
     class="add-property"
+    data-testid="add-property"
   >
     <form
       class="add-property__form"
