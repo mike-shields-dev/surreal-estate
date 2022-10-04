@@ -5,8 +5,23 @@
   border-bottom: 1px solid #555;
 }
 
-.navbar__logo {
-  width: 10rem;
+.navbar__brand {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+.navbar__brand-logo {
+  color: rgb(118, 72, 123);
+  font-size: 1rem;
+  min-width: 1rem;
+}
+
+.navbar__brand-name {
+  font-size: 1rem;
+  word-wrap: no-wrap;
 }
 
 .navbar__links-list {
