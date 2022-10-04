@@ -3,9 +3,10 @@
 exports[`ComboBox matches snapshot 1`] = `
 <DocumentFragment>
   <label
+    class="combobox__label"
     for="city"
   >
-    City
+    city
   </label>
   <select
     id="city"

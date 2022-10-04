@@ -4,10 +4,9 @@ import ComboBox from "../components/ComboBox";
 
 const values = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
 const props = {
-  value: values[0],
-  label: "City",
-  name: "city",
+  field: "city",
   onChange: jest.fn(),
+  value: values[0],
   values,
 };
 
@@ -20,32 +19,32 @@ describe("ComboBox", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders label with given label prop", () => {
+  it("renders select input with associated label and given props", () => {
     renderComboBox();
 
-    expect(screen.getByLabelText(props.label)).toBeInTheDocument();
-  });
+    const selectInput = screen.getByLabelText(props.field);
 
-  it("renders a select input", () => {
-    renderComboBox();
-
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
+    expect(selectInput.getAttribute("id")).toEqual(props.field);
+    expect(selectInput.getAttribute("name")).toEqual(props.field);
+    expect(selectInput).toHaveValue(props.value);
   });
 
   it("renders the given values as options", () => {
     renderComboBox();
 
-    const combobox = screen.getByRole("combobox");
-
     values.forEach((value) => {
-      expect(within(combobox).getByText(value)).toBeInTheDocument();
+      expect(
+        within(screen.getByRole("combobox", { name: props.field })).getByText(
+          value
+        )
+      ).toBeInTheDocument();
     });
   });
 
   it("invokes the onChange callback", async () => {
     renderComboBox();
 
-    fireEvent.change(screen.getByRole("combobox"), {
+    fireEvent.change(screen.getByRole("combobox", { name: props.field }), {
       target: { value: values[3] },
     });
 

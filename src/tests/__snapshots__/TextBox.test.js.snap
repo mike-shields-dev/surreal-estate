@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextBox matches snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="textbox__label"
+    for="title"
+  >
+    title
+  </label>
+  <input
+    id="title"
+    name="title"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;

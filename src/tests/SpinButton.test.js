@@ -3,10 +3,10 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import SpinButton from "../components/SpinButton";
 
 const props = {
-  label: "Bedrooms",
-  name: "bedrooms",
+  field: "bedrooms",
   value: 0,
   step: 1,
+  min: 0,
   onChange: jest.fn(),
 };
 
@@ -19,10 +19,16 @@ describe("SpinButton", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders a label with the given label prop", () => {
+  it("renders a number with the given props and and associated label", () => {
     renderSpinButton();
+    const numberInput = screen.getByLabelText(props.field);
 
-    expect(screen.getByLabelText(props.label)).toBeInTheDocument();
+    expect(numberInput.getAttribute("id")).toEqual(props.field);
+    expect(numberInput.getAttribute("name")).toEqual(props.field);
+    expect(numberInput.getAttribute("min")).toEqual(`${props.min}`);
+    expect(numberInput.getAttribute("step")).toEqual(`${props.step}`);
+    expect(numberInput.getAttribute("type")).toEqual("number");
+    expect(numberInput.getAttribute("value")).toEqual(`${props.value}`);
   });
 
   it("renders a number input", () => {

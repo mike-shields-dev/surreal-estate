@@ -11,9 +11,10 @@ exports[`AddProperty matches snapshot 1`] = `
       name="add property"
     >
       <label
+        class="textbox__label"
         for="title"
       >
-        Title
+        title
       </label>
       <input
         id="title"
@@ -22,9 +23,10 @@ exports[`AddProperty matches snapshot 1`] = `
         value=""
       />
       <label
+        class="combobox__label"
         for="type"
       >
-        Type
+        type
       </label>
       <select
         id="type"
@@ -62,9 +64,10 @@ exports[`AddProperty matches snapshot 1`] = `
         </option>
       </select>
       <label
+        class="spinbutton__label"
         for="bedrooms"
       >
-        Bedrooms
+        bedrooms 
       </label>
       <input
         id="bedrooms"
@@ -75,9 +78,10 @@ exports[`AddProperty matches snapshot 1`] = `
         value="1"
       />
       <label
+        class="spinbutton__label"
         for="bathrooms"
       >
-        Bathrooms
+        bathrooms 
       </label>
       <input
         id="bathrooms"
@@ -88,9 +92,10 @@ exports[`AddProperty matches snapshot 1`] = `
         value="1"
       />
       <label
+        class="spinbutton__label"
         for="price"
       >
-        Price £
+        price £
       </label>
       <input
         id="price"
@@ -101,9 +106,10 @@ exports[`AddProperty matches snapshot 1`] = `
         value="0"
       />
       <label
+        class="combobox__label"
         for="city"
       >
-        City
+        city
       </label>
       <select
         id="city"
@@ -131,9 +137,10 @@ exports[`AddProperty matches snapshot 1`] = `
         </option>
       </select>
       <label
+        class="textbox__label"
         for="email"
       >
-        Email
+        email
       </label>
       <input
         id="email"

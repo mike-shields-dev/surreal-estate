@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "../styles/ComboBox.module.css";
 
-const Combobox = ({ value, label, name, onChange, values }) => {
+const Combobox = ({ field, onChange, value, values }) => {
   return (
     <>
-      <label htmlFor={name}>{label}</label>
-      <select id={name} {...{ name, value, onChange }}>
+      <label htmlFor={field} className={styles.combobox__label}>
+        {field}
+      </label>
+      <select id={field} {...{ name: field, value, onChange }}>
         {values.map((val) => {
-          const id = `${val}-${name}-option`;
+          const id = `${val}-${field}-option`;
           return (
             <option key={id} value={val}>
               {val}
@@ -20,10 +23,9 @@ const Combobox = ({ value, label, name, onChange, values }) => {
 };
 
 Combobox.propTypes = {
-  value: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 

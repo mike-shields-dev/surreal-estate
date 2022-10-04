@@ -17,7 +17,6 @@ describe("Navbar", () => {
   });
 
   it("renders the company logo", () => {
-
     render(<NavBarWithBrowserRouter />);
     const logoEl = screen.getByTitle("surreal estate logo");
 

@@ -61,53 +61,47 @@ const AddProperty = () => {
         onSubmit={handleAddProperty}
       >
         <TextBox
-          label="Title"
-          name="title"
+          field="title"
           onChange={handleFieldChange}
           type="text"
           value={fields.title}
         />
         <ComboBox
-          label="Type"
-          name="type"
+          field="type"
           onChange={handleFieldChange}
           value={fields.type}
           values={types}
         />
         <SpinButton
-          label="Bedrooms"
+          field="bedrooms"
           min={0}
-          name="bedrooms"
           onChange={handleFieldChange}
           step={1}
           value={fields.bedrooms}
         />
         <SpinButton
-          label="Bathrooms"
+          field="bathrooms"
           min={0}
-          name="bathrooms"
           onChange={handleFieldChange}
           step={1}
           value={fields.bathrooms}
         />
         <SpinButton
-          label="Price £"
+          field="price"
           min={0}
-          name="price"
           onChange={handleFieldChange}
           step={5000}
+          units="£"
           value={fields.price}
         />
         <ComboBox
-          label="City"
-          name="city"
+          field="city"
           onChange={handleFieldChange}
           value={fields.city}
           values={cities}
         />
         <TextBox
-          label="Email"
-          name="email"
+          field="email"
           onChange={handleFieldChange}
           value={fields.email}
           type="email"

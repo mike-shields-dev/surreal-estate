@@ -26,14 +26,12 @@ describe("AddProperty", () => {
   it("renders a combobox for the 'type' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText("Type")).toBeInTheDocument();
     expect(screen.getByRole("combobox", { name: /type/i })).toBeInTheDocument();
   });
 
   it("renders a spinbutton for the 'bedrooms' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText(/bedrooms/i)).toBeInTheDocument();
     expect(
       screen.getByRole("spinbutton", { name: /bedrooms/i })
     ).toBeInTheDocument();
@@ -42,7 +40,6 @@ describe("AddProperty", () => {
   it("renders a spinbutton for the 'bathrooms' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText(/bathrooms/i)).toBeInTheDocument();
     expect(
       screen.getByRole("spinbutton", { name: /bathrooms/i })
     ).toBeInTheDocument();
@@ -51,7 +48,6 @@ describe("AddProperty", () => {
   it("renders a spinbutton for the 'price' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText(/price £/i)).toBeInTheDocument();
     expect(
       screen.getByRole("spinbutton", { name: /price/i })
     ).toBeInTheDocument();
@@ -60,14 +56,12 @@ describe("AddProperty", () => {
   it("renders a combobox for the 'city' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText("City")).toBeInTheDocument();
     expect(screen.getByRole("combobox", { name: /city/i })).toBeInTheDocument();
   });
 
   it("renders a email input for the 'email' field", () => {
     renderAddProperty();
 
-    expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: /email/i })).toBeInTheDocument();
   });
 

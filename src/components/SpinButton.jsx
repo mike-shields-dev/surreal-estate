@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "../styles/SpinButton.module.css";
 
-const SpinButton = ({ label, min, name, value, step, onChange }) => {
+const SpinButton = ({ field, min, value, step, onChange, units }) => {
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={field} className={styles.spinbutton__label}>
+        {field} {units}
+      </label>
       <input
-        id={name}
+        id={field}
         min={min}
-        name={name}
+        name={field}
         onChange={onChange}
         step={step}
         type="number"
@@ -20,15 +23,16 @@ const SpinButton = ({ label, min, name, value, step, onChange }) => {
 
 SpinButton.defaultProps = {
   min: null,
+  units: null,
 };
 
 SpinButton.propTypes = {
-  label: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  step: PropTypes.number.isRequired,
+  step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onChange: PropTypes.func.isRequired,
+  units: PropTypes.string,
 };
 
 export default SpinButton;

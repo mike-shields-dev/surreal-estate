@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "../styles/TextBox.module.css";
 
-const TextBox = ({ label, name, onChange, value, type }) => {
+const TextBox = ({ field, onChange, value, type }) => {
   return (
     <>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={field} className={styles.textbox__label}>
+        {field}
+      </label>
       <input
-        id={name}
-        name={name}
+        id={field}
+        name={field}
         onChange={onChange}
         type={type}
         value={value}
@@ -17,11 +20,10 @@ const TextBox = ({ label, name, onChange, value, type }) => {
 };
 
 TextBox.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  field: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default TextBox;
