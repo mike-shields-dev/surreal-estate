@@ -9,7 +9,6 @@ const App = () => {
   return (
     <div className="App">
       <NavBar />
-      <h2>Surreal Estate</h2>
       <Routes>
         <Route path="/properties" element={<Properties />} />
         <Route path="/add-property" element={<AddProperty />} />
