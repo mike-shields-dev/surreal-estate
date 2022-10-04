@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
@@ -17,8 +17,9 @@ describe("Navbar", () => {
   });
 
   it("renders the company logo", () => {
-    const { getByTestId } = render(<NavBarWithBrowserRouter />);
-    const logoEl = getByTestId("company-logo");
+
+    render(<NavBarWithBrowserRouter />);
+    const logoEl = screen.getByTitle("surreal estate logo");
 
     expect(logoEl).toBeInTheDocument();
   });
