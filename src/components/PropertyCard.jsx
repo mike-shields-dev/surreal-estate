@@ -18,25 +18,32 @@ const PropertyCard = ({
       <header className={styles["property-card__header"]}>
         <FaFortAwesome title="surreal estate logo" />
       </header>
-      <main>
-        <h2>{title}</h2>
+      <main className={styles["property-card__main"]}>
+        <h2 className={styles["property-card__title"]}>{title}</h2>
         <p>
-          <span>{type}</span> - <span>{city}</span>
+          <span className={styles["property-card__type-location"]}>{type}</span>{" "}
+          - <span>{city}</span>
         </p>
         <p className={styles["property-card__bathrooms"]}>
-          <FaBath />
+          <FaBath
+            className={styles["property-card__bath-icon"]}
+            title="bath icon"
+          />{" "}
           <span>{bathrooms}</span>
         </p>
         <p className={styles["property-card__bedrooms"]}>
-          <FaBed />
+          <FaBed
+            className={styles["property-card__bed-icon"]}
+            title="bed icon"
+          />{" "}
           <span>{bedrooms}</span>
         </p>
         <p>
-          £<span>{price}</span>
+          <span className={styles["property-card__currency"]}>£</span> {price}
         </p>
       </main>
       <a className={styles["property-card__mailto"]} href={`mailto:${email}`}>
-        <HiOutlineMail />
+        <HiOutlineMail className={styles["property-card__mail-icon"]} />
         <span>email</span>
       </a>
     </div>

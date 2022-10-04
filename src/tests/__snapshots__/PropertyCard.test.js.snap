@@ -25,12 +25,18 @@ exports[`PropertyCard matches snapshot 1`] = `
         />
       </svg>
     </header>
-    <main>
-      <h2>
+    <main
+      class="property-card__main"
+    >
+      <h2
+        class="property-card__title"
+      >
         2 bedroom period property
       </h2>
       <p>
-        <span>
+        <span
+          class="property-card__type-location"
+        >
           Flat
         </span>
          - 
@@ -42,6 +48,7 @@ exports[`PropertyCard matches snapshot 1`] = `
         class="property-card__bathrooms"
       >
         <svg
+          class="property-card__bath-icon"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -50,10 +57,14 @@ exports[`PropertyCard matches snapshot 1`] = `
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title>
+            bath icon
+          </title>
           <path
             d="M32,384a95.4,95.4,0,0,0,32,71.09V496a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16V480H384v16a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16V455.09A95.4,95.4,0,0,0,480,384V336H32ZM496,256H80V69.25a21.26,21.26,0,0,1,36.28-15l19.27,19.26c-13.13,29.88-7.61,59.11,8.62,79.73l-.17.17A16,16,0,0,0,144,176l11.31,11.31a16,16,0,0,0,22.63,0L283.31,81.94a16,16,0,0,0,0-22.63L272,48a16,16,0,0,0-22.62,0l-.17.17c-20.62-16.23-49.83-21.75-79.73-8.62L150.22,20.28A69.25,69.25,0,0,0,32,69.25V256H16A16,16,0,0,0,0,272v16a16,16,0,0,0,16,16H496a16,16,0,0,0,16-16V272A16,16,0,0,0,496,256Z"
           />
         </svg>
+         
         <span>
           3
         </span>
@@ -62,6 +73,7 @@ exports[`PropertyCard matches snapshot 1`] = `
         class="property-card__bedrooms"
       >
         <svg
+          class="property-card__bed-icon"
           fill="currentColor"
           height="1em"
           stroke="currentColor"
@@ -70,19 +82,25 @@ exports[`PropertyCard matches snapshot 1`] = `
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title>
+            bed icon
+          </title>
           <path
             d="M176 256c44.11 0 80-35.89 80-80s-35.89-80-80-80-80 35.89-80 80 35.89 80 80 80zm352-128H304c-8.84 0-16 7.16-16 16v144H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v352c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-48h512v48c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V240c0-61.86-50.14-112-112-112z"
           />
         </svg>
+         
         <span>
           2
         </span>
       </p>
       <p>
-        £
-        <span>
-          1000
+        <span
+          class="property-card__currency"
+        >
+          £
         </span>
+         1000
       </p>
     </main>
     <a
@@ -90,6 +108,7 @@ exports[`PropertyCard matches snapshot 1`] = `
       href="mailto:example@example.com"
     >
       <svg
+        class="property-card__mail-icon"
         fill="none"
         height="1em"
         stroke="currentColor"

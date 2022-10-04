@@ -27,43 +27,55 @@ describe("PropertyCard", () => {
     expect(screen.getByTitle("surreal estate logo")).toBeInTheDocument();
   });
 
-  it("renders the property title", () => {
+  it("renders the title prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText([props.title])).toBeInTheDocument();
   });
 
-  it("renders the type of property", () => {
+  it("renders the type prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText(props.type)).toBeInTheDocument();
   });
 
-  it("renders the city", () => {
+  it("renders the city prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText(props.city)).toBeInTheDocument();
   });
 
-  it("renders the number of bathrooms", () => {
+  it("renders the bathrooms prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText(props.bathrooms)).toBeInTheDocument();
   });
 
-  it("renders the number of bedrooms", () => {
+  it("renders a bath icon", () => {
+    renderPropertyCard();
+
+    expect(screen.getByTitle("bath icon")).toBeInTheDocument();
+  });
+
+  it("renders the bedrooms prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText(props.bedrooms)).toBeInTheDocument();
   });
 
-  it("renders the price", () => {
+  it("renders a bed icon", () => {
+    renderPropertyCard();
+
+    expect(screen.getByTitle("bed icon")).toBeInTheDocument();
+  });
+
+  it("renders price prop", () => {
     renderPropertyCard();
 
     expect(screen.getByText(props.bedrooms)).toBeInTheDocument();
   });
 
-  it("renders a 'mailto' link with the give email", () => {
+  it("renders a 'mailto' link with the give email prop", () => {
     renderPropertyCard();
     const mailtoLink = screen.getByText(/email/i);
 
