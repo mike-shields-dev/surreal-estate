@@ -1,9 +1,7 @@
 .alert--success {
-  color: #0f0;
-  background-color: #0f02;
+  color: var(--clr-success);
 }
 
 .alert--error {
-  color: #f00;
-  background-color: #f002;
+  color: var(--clr-danger);
 }

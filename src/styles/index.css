@@ -6,12 +6,60 @@
   box-sizing: 0;
 }
 
+:root {
+  --clr-brand: #76487b;
+  --clr-danger: #f00;
+  --clr-success: #0f0;
+  --bg-clr-dark: #ccc;
+  --bg-clr-mid: #ddd;
+  --bg-clr-light: #fff;
+  --font-clr-light: #fff;
+  --font-clr-dark: #111;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #ddd;
+  background-color: var(--bg-clr-dark);
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+}
+
+main {
+  padding: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.25em;
+  text-transform: capitalize;
+  width: min-content;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--bg-clr-mid);
+  padding: 0.5em;
+  background: var(--bg-clr-light);
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  width: min-content;
+  color: var(--font-clr-light);
+  background-color: var(--clr-brand);
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+a.active {
+  color: var(--clr-brand);
 }

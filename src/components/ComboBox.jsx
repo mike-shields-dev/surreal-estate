@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../styles/ComboBox.module.css";
 
 const Combobox = ({ field, onChange, value, values }) => {
   return (
-    <>
-      <label htmlFor={field} className={styles.combobox__label}>
-        {field}
-      </label>
-      <select id={field} {...{ name: field, value, onChange }}>
+    <label htmlFor={field}>
+      {field}
+      <select required id={field} {...{ name: field, value, onChange }}>
+        <option value="" disabled>
+          {" "}
+        </option>
         {values.map((val) => {
           const id = `${val}-${field}-option`;
           return (
@@ -18,7 +18,7 @@ const Combobox = ({ field, onChange, value, values }) => {
           );
         })}
       </select>
-    </>
+    </label>
   );
 };
 

@@ -3,18 +3,18 @@
 exports[`SpinButton matches snapshot 1`] = `
 <DocumentFragment>
   <label
-    class="spinbutton__label"
     for="bedrooms"
   >
     bedrooms 
+    <input
+      id="bedrooms"
+      min="0"
+      name="bedrooms"
+      required=""
+      step="1"
+      type="number"
+      value="0"
+    />
   </label>
-  <input
-    id="bedrooms"
-    min="0"
-    name="bedrooms"
-    step="1"
-    type="number"
-    value="0"
-  />
 </DocumentFragment>
 `;

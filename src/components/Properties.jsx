@@ -1,5 +1,6 @@
 import React from "react";
 import PropertyCard from "./PropertyCard";
+import styles from "../styles/Properties.module.css";
 
 const properties = [
   {
@@ -16,11 +17,11 @@ const properties = [
 
 const Properties = () => {
   return (
-    <div data-testid="properties">
+    <main className={styles.properties} title="properties">
       {properties.map((property) => (
         <PropertyCard key={property._id} {...property} />
       ))}
-    </div>
+    </main>
   );
 };
 

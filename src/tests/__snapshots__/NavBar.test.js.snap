@@ -2,10 +2,7 @@
 
 exports[`Navbar matches snapshot 1`] = `
 <DocumentFragment>
-  <nav
-    class="navbar"
-    data-testid="navbar"
-  >
+  <nav>
     <div
       class="navbar__brand"
     >
@@ -39,7 +36,7 @@ exports[`Navbar matches snapshot 1`] = `
         class="navbar__links-list-item"
       >
         <a
-          class="navbar__link"
+          class=""
           href="/properties"
         >
           View Properties
@@ -49,7 +46,7 @@ exports[`Navbar matches snapshot 1`] = `
         class="navbar__links-list-item"
       >
         <a
-          class="navbar__link"
+          class=""
           href="/add-property"
         >
           Add Property

@@ -7,12 +7,13 @@ exports[`TextBox matches snapshot 1`] = `
     for="title"
   >
     title
+    <input
+      id="title"
+      name="title"
+      required=""
+      type="text"
+      value=""
+    />
   </label>
-  <input
-    id="title"
-    name="title"
-    type="text"
-    value=""
-  />
 </DocumentFragment>
 `;

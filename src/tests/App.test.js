@@ -13,38 +13,37 @@ const renderApp = () =>
 describe("App", () => {
   it("renders NavBar", () => {
     renderApp();
-    const navBarEl = screen.getByTestId("navbar");
 
-    expect(navBarEl).toBeInTheDocument();
+    expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 
-  describe("App client side routing", () => {
+  describe("App routing", () => {
     it("renders Properties component as root path", () => {
       renderApp();
 
-      expect(screen.queryByTestId("properties")).toBeInTheDocument();
+      expect(screen.queryByTitle("properties")).toBeInTheDocument();
     });
 
     it("selecting each hyperlink, renders the correct routed component", () => {
       const { getByRole } = renderApp();
 
-      const addPropertyLinkEl = getByRole("link", { name: "Add Property" });
-      const viewPropertiesLinkEl = getByRole("link", {
+      const addPropertyLink = getByRole("link", { name: "Add Property" });
+      const viewPropertiesLink = getByRole("link", {
         name: "View Properties",
       });
 
-      expect(screen.queryByTestId("properties")).toBeInTheDocument();
-      expect(screen.queryByTestId("add-property")).not.toBeInTheDocument();
+      expect(screen.queryByTitle("properties")).toBeInTheDocument();
+      expect(screen.queryByTitle("add property")).not.toBeInTheDocument();
 
-      fireEvent.click(addPropertyLinkEl);
+      fireEvent.click(addPropertyLink);
 
-      expect(screen.queryByTestId("add-property")).toBeInTheDocument();
-      expect(screen.queryByTestId("properties")).not.toBeInTheDocument();
+      expect(screen.queryByTitle("add property")).toBeInTheDocument();
+      expect(screen.queryByTitle("properties")).not.toBeInTheDocument();
 
-      fireEvent.click(viewPropertiesLinkEl);
+      fireEvent.click(viewPropertiesLink);
 
-      expect(screen.queryByTestId("properties")).toBeInTheDocument();
-      expect(screen.queryByTestId("add-property")).not.toBeInTheDocument();
+      expect(screen.queryByTitle("properties")).toBeInTheDocument();
+      expect(screen.queryByTitle("add property")).not.toBeInTheDocument();
     });
   });
 });

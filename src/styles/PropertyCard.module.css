@@ -2,13 +2,14 @@
   display: grid;
   font-size: 0.825rem;
   gap: 1em;
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: left;
+  background-color: var(--bg-clr-light);
 }
 
 .property-card__header {
-  background: rgb(205, 205, 205);
-  color: rgb(118, 72, 123);
+  background: var(--bg-clr-mid);
+  color: var(--clr-brand);
   display: grid;
   font-size: 2rem;
   padding: 1em;
@@ -18,13 +19,14 @@
 .property-card__main {
   display: grid;
   gap: 0.5em;
+  padding: 0.25rem;
 }
 
 .property-card__title {
   font-size: 0.825rem;
 }
 
-.property-card__type-location {
+.property-card__type-and-location {
   font-style: italic;
 }
 

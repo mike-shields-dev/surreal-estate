@@ -1,11 +1,14 @@
-.navbar {
+nav {
+  border: none;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: #fff;
-  border-bottom: 1px solid #555;
+  padding-right: 1rem;
 }
 
 .navbar__brand {
+  font-size: 1rem;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -14,8 +17,7 @@
 }
 
 .navbar__brand-logo {
-  color: rgb(118, 72, 123);
-  font-size: 1rem;
+  color: var(--clr-brand);
   min-width: 1rem;
 }
 
@@ -26,6 +28,7 @@
 
 .navbar__links-list {
   display: flex;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -33,7 +36,6 @@
 
 .navbar__links-list-item {
   display: inline-block;
-  padding-left: 2em;
 }
 
 .navbar__link {
@@ -42,5 +44,5 @@
 }
 
 .navbar__link--active {
-  color: red;
+  /* color: var(--clr-brand); */
 }

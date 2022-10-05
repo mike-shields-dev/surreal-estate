@@ -20,29 +20,33 @@ const PropertyCard = ({
       </header>
       <main className={styles["property-card__main"]}>
         <h2 className={styles["property-card__title"]}>{title}</h2>
-        <p>
-          <span className={styles["property-card__type-location"]}>{type}</span>{" "}
-          - <span>{city}</span>
+        <p className={styles["property-card__type-and-location"]}>
+          <span>{type}</span> - <span>{city}</span>
         </p>
         <p className={styles["property-card__bathrooms"]}>
           <FaBath
             className={styles["property-card__bath-icon"]}
             title="bath icon"
           />{" "}
-          <span>{bathrooms}</span>
+          {bathrooms}
         </p>
         <p className={styles["property-card__bedrooms"]}>
           <FaBed
             className={styles["property-card__bed-icon"]}
             title="bed icon"
-          />{" "}
-          <span>{bedrooms}</span>
+          />
+          {bedrooms}
         </p>
         <p>
           <span className={styles["property-card__currency"]}>£</span> {price}
         </p>
       </main>
-      <a className={styles["property-card__mailto"]} href={`mailto:${email}`}>
+      <a
+        className={styles["property-card__mailto"]}
+        href={`mailto:${email}`}
+        rel="noreferrer"
+        target="_blank"
+      >
         <HiOutlineMail className={styles["property-card__mail-icon"]} />
         <span>email</span>
       </a>

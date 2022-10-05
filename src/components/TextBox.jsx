@@ -4,18 +4,17 @@ import styles from "../styles/TextBox.module.css";
 
 const TextBox = ({ field, onChange, value, type }) => {
   return (
-    <>
-      <label htmlFor={field} className={styles.textbox__label}>
-        {field}
-      </label>
+    <label htmlFor={field} className={styles.textbox__label}>
+      {field}
       <input
+        required
         id={field}
         name={field}
         onChange={onChange}
         type={type}
         value={value}
       />
-    </>
+    </label>
   );
 };
 

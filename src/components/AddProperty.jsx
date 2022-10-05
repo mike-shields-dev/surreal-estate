@@ -23,11 +23,11 @@ const initialState = {
   },
   fields: {
     title: "",
-    city: cities[0],
-    type: types[0],
-    bedrooms: 1,
-    bathrooms: 1,
-    price: 0,
+    city: "",
+    type: "",
+    bedrooms: "",
+    bathrooms: "",
+    price: "",
     email: "",
   },
 };
@@ -53,13 +53,13 @@ const AddProperty = () => {
   };
 
   return (
-    <div className={styles["add-property"]} data-testid="add-property">
-      <Alert {...alert} />
+    <main className={styles["add-property"]} title="add property">
       <form
         className={styles["add-property__form"]}
         name="add property"
         onSubmit={handleAddProperty}
       >
+        <Alert {...alert} />
         <TextBox
           field="title"
           onChange={handleFieldChange}
@@ -74,23 +74,23 @@ const AddProperty = () => {
         />
         <SpinButton
           field="bedrooms"
-          min={0}
+          min="0"
           onChange={handleFieldChange}
-          step={1}
+          step="1"
           value={fields.bedrooms}
         />
         <SpinButton
           field="bathrooms"
-          min={0}
+          min="0"
           onChange={handleFieldChange}
-          step={1}
+          step="1"
           value={fields.bathrooms}
         />
         <SpinButton
           field="price"
-          min={0}
+          min="0"
           onChange={handleFieldChange}
-          step={5000}
+          step="1"
           units="£"
           value={fields.price}
         />
@@ -108,7 +108,7 @@ const AddProperty = () => {
         />
         <button type="submit">Add</button>
       </form>
-    </div>
+    </main>
   );
 };
 
