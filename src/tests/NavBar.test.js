@@ -17,16 +17,17 @@ describe("Navbar", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders a navigation bar", () => {
+  it("renders a navigation", () => {
     renderNavBar();
 
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 
-  it("renders the company logo", () => {
+  it("renders the company branding", () => {
     renderNavBar();
 
-    expect(screen.getByTitle("surreal estate logo")).toBeInTheDocument();
+    expect(screen.getByTitle(/brand logo/i)).toBeInTheDocument();
+    expect(screen.getByTitle(/brand name/i)).toBeInTheDocument();
   });
 
   it("renders a 'View Properties' hyperlink with a path of 'properties'", () => {

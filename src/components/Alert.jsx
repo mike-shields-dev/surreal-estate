@@ -7,7 +7,7 @@ const Alert = ({ message, isSuccess }) => {
   return (
     <div
       className={isSuccess ? css["alert--success"] : css["alert--error"]}
-      data-testid="alert"
+      title="alert"
     >
       {message}
     </div>

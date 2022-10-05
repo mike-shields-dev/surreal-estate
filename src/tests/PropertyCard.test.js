@@ -21,10 +21,10 @@ describe("PropertyCard", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders the surreal estate logo", () => {
+  it("renders the brand logo", () => {
     renderPropertyCard();
 
-    expect(screen.getByTitle("surreal estate logo")).toBeInTheDocument();
+    expect(screen.getByTitle("brand logo")).toBeInTheDocument();
   });
 
   it("renders the title prop", () => {
@@ -75,7 +75,10 @@ describe("PropertyCard", () => {
     expect(screen.getByText(props.bedrooms)).toBeInTheDocument();
   });
 
-  it("renders a 'mailto' link with the give email prop", () => {
+  it(`renders a 'mailto' link: 
+      - with the given email prop
+      - that securely opens a new tab
+    `, () => {
     renderPropertyCard();
     const mailtoLink = screen.getByText(/email/i);
 
@@ -83,5 +86,7 @@ describe("PropertyCard", () => {
       "href",
       `mailto:${props.email}`
     );
+    expect(mailtoLink.closest("a")).toHaveAttribute("target", "_blank");
+    expect(mailtoLink.closest("a")).toHaveAttribute("rel", "noreferrer");
   });
 });

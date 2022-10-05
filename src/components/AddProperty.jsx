@@ -69,8 +69,8 @@ const AddProperty = () => {
         <ComboBox
           field="type"
           onChange={handleFieldChange}
+          options={types}
           value={fields.type}
-          values={types}
         />
         <SpinButton
           field="bedrooms"
@@ -97,8 +97,8 @@ const AddProperty = () => {
         <ComboBox
           field="city"
           onChange={handleFieldChange}
+          options={cities}
           value={fields.city}
-          values={cities}
         />
         <TextBox
           field="email"

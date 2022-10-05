@@ -1,19 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Combobox = ({ field, onChange, value, values }) => {
+const Combobox = ({ field, onChange, options, value }) => {
   return (
     <label htmlFor={field}>
       {field}
-      <select required id={field} {...{ name: field, value, onChange }}>
+      <select
+        required
+        id={field}
+        name={field}
+        onChange={onChange}
+        value={value}
+      >
         <option value="" disabled>
           {" "}
         </option>
-        {values.map((val) => {
-          const id = `${val}-${field}-option`;
+        {options.map((option) => {
+          const id = `${option}-${field}-option`;
           return (
-            <option key={id} value={val}>
-              {val}
+            <option key={id} value={option}>
+              {option}
             </option>
           );
         })}
@@ -22,11 +28,15 @@ const Combobox = ({ field, onChange, value, values }) => {
   );
 };
 
+Combobox.defaultProps = {
+  value: "",
+};
+
 Combobox.propTypes = {
   field: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string,
 };
 
 export default Combobox;

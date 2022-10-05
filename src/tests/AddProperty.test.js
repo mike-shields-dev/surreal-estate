@@ -59,7 +59,7 @@ describe("AddProperty", () => {
     expect(screen.getByRole("combobox", { name: /city/i })).toBeInTheDocument();
   });
 
-  it("renders a email input for the 'email' field", () => {
+  it("renders an email input for the 'email' field", () => {
     renderAddProperty();
 
     expect(screen.getByRole("textbox", { name: /email/i })).toBeInTheDocument();

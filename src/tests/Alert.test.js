@@ -13,29 +13,33 @@ const errorProps = {
 };
 
 describe("Alert", () => {
-  it("matches snapshot", () => {
+  it("renders the provided message", () => {
     const { asFragment } = render(<Alert {...successProps} />);
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it("renders the provided message", () => {
-    render(<Alert {...successProps} />);
-
     expect(screen.getByText(successProps.message)).toBeInTheDocument();
   });
 
-  it("has the correct class name when given success prop equal to true", () => {
-    render(<Alert {...successProps} />);
-    const alert = screen.getByText(successProps.message);
+  it("renders nothing if no message is provided", () => {
+    const { asFragment } = render(<Alert message="" isSuccess />);
 
-    expect(alert).toHaveClass("alert--success");
+    expect(asFragment()).toMatchSnapshot();
+    expect(screen.queryByTitle("alert")).toBeFalsy();
+  });
+
+  it("has the correct class name when given success prop equal to true", () => {
+    const { asFragment } = render(<Alert {...successProps} />);
+
+    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText(successProps.message)).toHaveClass(
+      "alert--success"
+    );
   });
 
   it("has the correct class name when given success prop equal to false", () => {
-    render(<Alert {...errorProps} />);
-    const alert = screen.getByText(errorProps.message);
+    const { asFragment } = render(<Alert {...errorProps} />);
 
-    expect(alert).toHaveClass("alert--error");
+    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText(errorProps.message)).toHaveClass("alert--error");
   });
 });

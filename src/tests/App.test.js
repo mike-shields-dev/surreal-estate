@@ -11,29 +11,29 @@ const renderApp = () =>
   );
 
 describe("App", () => {
-  it("renders NavBar", () => {
+  it("renders a navigation", () => {
     renderApp();
 
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 
-  describe("App routing", () => {
-    it("renders Properties component as root path", () => {
+  describe("client-side routing", () => {
+    it("renders Properties component at root path", () => {
       renderApp();
 
       expect(screen.queryByTitle("properties")).toBeInTheDocument();
+      expect(screen.queryByTitle("add property")).not.toBeInTheDocument();
     });
 
     it("selecting each hyperlink, renders the correct routed component", () => {
-      const { getByRole } = renderApp();
+      renderApp();
 
-      const addPropertyLink = getByRole("link", { name: "Add Property" });
-      const viewPropertiesLink = getByRole("link", {
+      const addPropertyLink = screen.getByRole("link", {
+        name: "Add Property",
+      });
+      const viewPropertiesLink = screen.getByRole("link", {
         name: "View Properties",
       });
-
-      expect(screen.queryByTitle("properties")).toBeInTheDocument();
-      expect(screen.queryByTitle("add property")).not.toBeInTheDocument();
 
       fireEvent.click(addPropertyLink);
 

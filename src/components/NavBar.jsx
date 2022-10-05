@@ -9,15 +9,17 @@ const NavBar = () => {
       <div className={styles.navbar__brand}>
         <FaFortAwesome
           className={styles["navbar__brand-logo"]}
-          title="surreal estate logo"
+          title="brand logo"
         />
-        <h1 className={styles["navbar__brand-name"]}>Surreal Estate</h1>
+        <h1 className={styles["navbar__brand-name"]} title="brand name">
+          Surreal Estate
+        </h1>
       </div>
       <ul className={styles["navbar__links-list"]}>
-        <li className={styles["navbar__links-list-item"]}>
+        <li>
           <NavLink to="/properties">View Properties</NavLink>
         </li>
-        <li className={styles["navbar__links-list-item"]}>
+        <li>
           <NavLink to="add-property">Add Property</NavLink>
         </li>
       </ul>

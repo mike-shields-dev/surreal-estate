@@ -4,10 +4,11 @@ import SpinButton from "../components/SpinButton";
 
 const props = {
   field: "bedrooms",
-  value: 0,
-  step: 1,
-  min: 0,
+  min: "0",
   onChange: jest.fn(),
+  step: "1",
+  units: "$",
+  value: "1",
 };
 
 const renderSpinButton = () => render(<SpinButton {...props} />);
@@ -19,16 +20,18 @@ describe("SpinButton", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders a number with the given props and and associated label", () => {
+  it("renders a number input with the given props and an associated label", () => {
     renderSpinButton();
-    const numberInput = screen.getByLabelText(props.field);
+    const numberInput = screen.getByRole("spinbutton", {
+      name: `${props.field} ${props.units}`,
+    });
 
-    expect(numberInput.getAttribute("id")).toEqual(props.field);
-    expect(numberInput.getAttribute("name")).toEqual(props.field);
-    expect(numberInput.getAttribute("min")).toEqual(`${props.min}`);
-    expect(numberInput.getAttribute("step")).toEqual(`${props.step}`);
-    expect(numberInput.getAttribute("type")).toEqual("number");
-    expect(numberInput.getAttribute("value")).toEqual(`${props.value}`);
+    expect(numberInput).toHaveAttribute("id", props.field);
+    expect(numberInput).toHaveAttribute("name", props.field);
+    expect(numberInput).toHaveAttribute("min", props.min);
+    expect(numberInput).toHaveAttribute("step", props.step);
+    expect(numberInput).toHaveAttribute("type", "number");
+    expect(numberInput).toHaveAttribute("value", props.value);
   });
 
   it("renders a number input", () => {

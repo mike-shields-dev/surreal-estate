@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SpinButton = ({ field, min, value, step, onChange, units }) => {
+const SpinButton = ({ field, min, onChange, step, units, value }) => {
   return (
     <label htmlFor={field}>
       {field} {units}
@@ -22,7 +22,7 @@ const SpinButton = ({ field, min, value, step, onChange, units }) => {
 SpinButton.defaultProps = {
   min: null,
   units: null,
-  step: 1,
+  step: null,
 };
 
 SpinButton.propTypes = {

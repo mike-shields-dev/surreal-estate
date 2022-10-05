@@ -16,7 +16,7 @@ const PropertyCard = ({
   return (
     <div className={styles["property-card"]}>
       <header className={styles["property-card__header"]}>
-        <FaFortAwesome title="surreal estate logo" />
+        <FaFortAwesome title="brand logo" />
       </header>
       <main className={styles["property-card__main"]}>
         <h2 className={styles["property-card__title"]}>{title}</h2>
@@ -24,17 +24,13 @@ const PropertyCard = ({
           <span>{type}</span> - <span>{city}</span>
         </p>
         <p className={styles["property-card__bathrooms"]}>
-          <FaBath
-            className={styles["property-card__bath-icon"]}
-            title="bath icon"
-          />{" "}
-          {bathrooms}
+          <FaBath title="bath icon" /> {bathrooms}
         </p>
         <p className={styles["property-card__bedrooms"]}>
           <FaBed
             className={styles["property-card__bed-icon"]}
             title="bed icon"
-          />
+          />{" "}
           {bedrooms}
         </p>
         <p>

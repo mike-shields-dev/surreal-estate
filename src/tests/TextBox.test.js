@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import TextBox from "../components/TextBox";
 
 const props = {
-  onChange: jest.fn(),
   field: "title",
+  onChange: jest.fn(),
   type: "text",
   value: "",
 };
@@ -21,11 +21,11 @@ describe("TextBox", () => {
   it("renders text input with associated label and given props", () => {
     renderTextBox();
 
-    const textInput = screen.getByLabelText(props.field);
+    const textInput = screen.getByRole("textbox", { name: props.field });
 
-    expect(textInput.getAttribute("id")).toEqual(props.field);
-    expect(textInput.getAttribute("name")).toEqual(props.field);
-    expect(textInput.getAttribute("type")).toEqual(props.type);
+    expect(textInput).toHaveAttribute("id", props.field);
+    expect(textInput).toHaveAttribute("name", props.field);
+    expect(textInput).toHaveAttribute("type", props.type);
     expect(textInput).toHaveValue(props.value);
   });
 
