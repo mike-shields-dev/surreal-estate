@@ -12,12 +12,6 @@ exports[`ComboBox matches snapshot 1`] = `
       required=""
     >
       <option
-        disabled=""
-        value=""
-      >
-         
-      </option>
-      <option
         value="Manchester"
       >
         Manchester
@@ -36,6 +30,12 @@ exports[`ComboBox matches snapshot 1`] = `
         value="Liverpool"
       >
         Liverpool
+      </option>
+      <option
+        disabled=""
+        value=""
+      >
+         
       </option>
     </select>
   </label>

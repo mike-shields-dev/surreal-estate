@@ -6,7 +6,7 @@ const options = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
 const props = {
   field: "city",
   onChange: jest.fn(),
-  value: options[0],
+  value: "",
   options,
 };
 
@@ -29,15 +29,23 @@ describe("ComboBox", () => {
     expect(selectInput).toHaveValue(props.value);
   });
 
-  it("forces the user to choose an valid option", () => {
+  it("defaults to a 'placeholder' option if given value prop is empty string", () => {
     renderComboBox();
-    const selectInput = screen.getByRole("combobox", { name: props.field });
-    const placeholderOption = screen.getAllByRole("option")[0];
+    const defaultOption = screen
+      .getAllByRole("option")
+      .find((option) => !option.value);
 
-    expect(selectInput).toHaveAttribute("required");
+    expect(defaultOption).toBeVisible();
+    expect(defaultOption).toHaveTextContent("");
+    expect(defaultOption).toHaveAttribute("disabled");
+  });
 
-    expect(placeholderOption).toHaveValue("");
-    expect(placeholderOption).toHaveAttribute("disabled");
+  it("forces the user to choose an option", () => {
+    renderComboBox();
+
+    expect(screen.getByRole("combobox", { name: props.field })).toHaveAttribute(
+      "required"
+    );
   });
 
   it("renders the given values as options", () => {

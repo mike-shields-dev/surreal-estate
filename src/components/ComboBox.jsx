@@ -6,23 +6,20 @@ const Combobox = ({ field, onChange, options, value }) => {
     <label htmlFor={field}>
       {field}
       <select
-        required
         id={field}
         name={field}
         onChange={onChange}
+        required
         value={value}
       >
-        <option value="" disabled>
+        {options.map((option) => (
+          <option key={`${option}-${field}-option`} value={option}>
+            {option}
+          </option>
+        ))}
+        <option disabled value="">
           {" "}
         </option>
-        {options.map((option) => {
-          const id = `${option}-${field}-option`;
-          return (
-            <option key={id} value={option}>
-              {option}
-            </option>
-          );
-        })}
       </select>
     </label>
   );

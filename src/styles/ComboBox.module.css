@@ -1,9 +1,0 @@
-.combobox__label {
-    display: grid;
-    gap: 0.25em;
-    text-transform: capitalize;
-}
-
-.combobox__input {
-    padding: 0.25em;
-}
