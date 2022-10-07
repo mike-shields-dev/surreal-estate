@@ -51,11 +51,11 @@ const PropertyCard = ({
 };
 
 PropertyCard.propTypes = {
-  bathrooms: PropTypes.number.isRequired,
-  bedrooms: PropTypes.number.isRequired,
+  bathrooms: PropTypes.string.isRequired,
+  bedrooms: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };

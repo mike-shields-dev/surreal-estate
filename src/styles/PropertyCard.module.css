@@ -1,10 +1,11 @@
 .property-card {
+  aspect-ratio: 1;
+  background-color: var(--bg-clr-light);
   display: grid;
   font-size: 0.825rem;
   gap: 1em;
   padding: 0.5rem;
   text-align: left;
-  background-color: var(--bg-clr-light);
 }
 
 .property-card__header {
@@ -49,13 +50,15 @@
 }
 
 .property-card__mailto {
+  align-self: flex-end;
+  height: min-height;
   align-items: center;
   background-color: rgb(118, 72, 123);
   color: #fff;
   display: flex;
   gap: 0.2em;
   justify-content: center;
-  padding: 0.5em;
+  padding: 1em;
   text-decoration: none;
   text-transform: capitalize;
 }
