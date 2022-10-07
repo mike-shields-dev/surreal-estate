@@ -1,7 +1,27 @@
 .alert--success {
   color: var(--clr-success);
+  padding: 0.25em;
+  position: relative;
+}
+
+.alert--success::before {
+  background: currentColor;
+  content: "";
+  opacity: 0.1;
+  position: absolute;
+  inset: 0 0 0 0;
 }
 
 .alert--error {
   color: var(--clr-danger);
+  padding: 0.25em;
+  position: relative;
+}
+
+.alert--error::before {
+  background: currentColor;
+  content: "";
+  inset: 0 0 0 0;
+  opacity: 0.1;
+  position: absolute;
 }

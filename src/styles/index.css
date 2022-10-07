@@ -9,7 +9,7 @@
 :root {
   --clr-brand: #76487b;
   --clr-danger: #f00;
-  --clr-success: #0f0;
+  --clr-success: rgb(0, 255, 0);
   --bg-clr-dark: #ccc;
   --bg-clr-mid: #ddd;
   --bg-clr-light: #fff;
