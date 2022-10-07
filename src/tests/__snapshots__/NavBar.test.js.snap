@@ -36,6 +36,7 @@ exports[`Navbar matches snapshot 1`] = `
       <li>
         <a
           class=""
+          draggable="false"
           href="/properties"
         >
           View Properties
@@ -44,6 +45,7 @@ exports[`Navbar matches snapshot 1`] = `
       <li>
         <a
           class=""
+          draggable="false"
           href="/add-property"
         >
           Add Property

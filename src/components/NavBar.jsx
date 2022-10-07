@@ -17,10 +17,14 @@ const NavBar = () => {
       </div>
       <ul className={styles["navbar__links-list"]}>
         <li>
-          <NavLink to="/properties">View Properties</NavLink>
+          <NavLink to="/properties" draggable="false">
+            View Properties
+          </NavLink>
         </li>
         <li>
-          <NavLink to="add-property">Add Property</NavLink>
+          <NavLink to="add-property" draggable="false">
+            Add Property
+          </NavLink>
         </li>
       </ul>
     </nav>
