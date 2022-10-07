@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "../styles/TextBox.module.css";
 
-const TextBox = ({ field, onChange, value, type }) => {
+const TextBox = ({ field, maxLength, onChange, value, type }) => {
   return (
     <label htmlFor={field} className={styles.textbox__label}>
       {field}
@@ -13,14 +13,20 @@ const TextBox = ({ field, onChange, value, type }) => {
         onChange={onChange}
         type={type}
         value={value}
+        maxLength={maxLength}
       />
     </label>
   );
 };
 
+TextBox.defaultProps = {
+  maxLength: null,
+};
+
 TextBox.propTypes = {
-  onChange: PropTypes.func.isRequired,
   field: PropTypes.string.isRequired,
+  maxLength: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
 };

@@ -9,6 +9,7 @@ exports[`TextBox matches snapshot 1`] = `
     title
     <input
       id="title"
+      maxlength="64"
       name="title"
       required=""
       type="text"

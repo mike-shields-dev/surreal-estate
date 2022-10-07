@@ -7,6 +7,7 @@ const props = {
   onChange: jest.fn(),
   type: "text",
   value: "",
+  maxLength: "64",
 };
 
 const renderTextBox = () => render(<TextBox {...props} />);
@@ -24,6 +25,7 @@ describe("TextBox", () => {
     const textInput = screen.getByRole("textbox", { name: props.field });
 
     expect(textInput).toHaveAttribute("id", props.field);
+    expect(textInput).toHaveAttribute("maxLength", props.maxLength);
     expect(textInput).toHaveAttribute("name", props.field);
     expect(textInput).toHaveAttribute("type", props.type);
     expect(textInput).toHaveValue(props.value);
