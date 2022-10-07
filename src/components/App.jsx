@@ -6,7 +6,7 @@ import Properties from "./Properties";
 
 const App = () => {
   return (
-    <div className="app">
+    <div>
       <NavBar />
       <Routes>
         <Route path="/properties" element={<Properties />} />
