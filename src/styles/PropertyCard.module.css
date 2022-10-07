@@ -1,5 +1,4 @@
 .property-card {
-  aspect-ratio: 1;
   background-color: var(--bg-clr-light);
   display: grid;
   font-size: 0.825rem;
