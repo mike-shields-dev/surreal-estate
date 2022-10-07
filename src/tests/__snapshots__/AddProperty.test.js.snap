@@ -17,6 +17,7 @@ exports[`AddProperty matches snapshot 1`] = `
         title
         <input
           id="title"
+          maxlength="28"
           name="title"
           required=""
           type="text"
@@ -32,12 +33,6 @@ exports[`AddProperty matches snapshot 1`] = `
           name="type"
           required=""
         >
-          <option
-            disabled=""
-            value=""
-          >
-             
-          </option>
           <option
             value="Flat"
           >
@@ -67,6 +62,12 @@ exports[`AddProperty matches snapshot 1`] = `
             value="Bungalow"
           >
             Bungalow
+          </option>
+          <option
+            disabled=""
+            value=""
+          >
+             
           </option>
         </select>
       </label>
@@ -122,12 +123,6 @@ exports[`AddProperty matches snapshot 1`] = `
           required=""
         >
           <option
-            disabled=""
-            value=""
-          >
-             
-          </option>
-          <option
             value="Manchester"
           >
             Manchester
@@ -147,6 +142,12 @@ exports[`AddProperty matches snapshot 1`] = `
           >
             Liverpool
           </option>
+          <option
+            disabled=""
+            value=""
+          >
+             
+          </option>
         </select>
       </label>
       <label
@@ -156,6 +157,7 @@ exports[`AddProperty matches snapshot 1`] = `
         email
         <input
           id="email"
+          maxlength="64"
           name="email"
           required=""
           type="email"
