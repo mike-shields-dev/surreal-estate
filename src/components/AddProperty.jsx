@@ -45,6 +45,7 @@ const AddProperty = () => {
         : "Something went wrong, please try again later",
       isSuccess: isPropertyAdded,
     });
+    setFields(initialState.fields);
   };
 
   const handleFieldChange = (event) => {
@@ -65,6 +66,7 @@ const AddProperty = () => {
           onChange={handleFieldChange}
           type="text"
           value={fields.title}
+          maxLength="28"
         />
         <ComboBox
           field="type"
@@ -105,6 +107,7 @@ const AddProperty = () => {
           onChange={handleFieldChange}
           value={fields.email}
           type="email"
+          maxLength="64"
         />
         <button type="submit">Add</button>
       </form>
