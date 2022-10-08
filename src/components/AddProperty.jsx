@@ -5,16 +5,8 @@ import SpinButton from "./SpinButton";
 import TextBox from "./TextBox";
 import Alert from "./Alert";
 import addProperty from "../requests/addProperty";
-
-const cities = ["Manchester", "Leeds", "Sheffield", "Liverpool"];
-const types = [
-  "Flat",
-  "Semi-detached",
-  "Terraced",
-  "End of Terrace",
-  "Cottage",
-  "Bungalow",
-];
+import cities from "../config/cities.json";
+import types from "../config/types.json";
 
 const initialState = {
   alert: {
@@ -54,7 +46,7 @@ const AddProperty = () => {
   };
 
   return (
-    <main className={styles["add-property"]} title="add property">
+    <div className={styles["add-property"]} title="add property">
       <form
         className={styles["add-property__form"]}
         name="add property"
@@ -66,7 +58,7 @@ const AddProperty = () => {
           onChange={handleFieldChange}
           type="text"
           value={fields.title}
-          maxLength="28"
+          maxLength="48"
         />
         <ComboBox
           field="type"
@@ -111,7 +103,7 @@ const AddProperty = () => {
         />
         <button type="submit">Add</button>
       </form>
-    </main>
+    </div>
   );
 };
 

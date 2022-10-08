@@ -1,4 +1,8 @@
-form {
+.add-property {
+ padding: 1rem;
+}
+
+.add-property__form {
   background: var(--bg-clr-light);
   display: grid;
   gap: 1rem;

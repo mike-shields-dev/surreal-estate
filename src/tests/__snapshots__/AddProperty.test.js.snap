@@ -2,7 +2,7 @@
 
 exports[`AddProperty matches snapshot 1`] = `
 <DocumentFragment>
-  <main
+  <div
     class="add-property"
     title="add property"
   >
@@ -17,7 +17,7 @@ exports[`AddProperty matches snapshot 1`] = `
         title
         <input
           id="title"
-          maxlength="28"
+          maxlength="48"
           name="title"
           required=""
           type="text"
@@ -34,6 +34,21 @@ exports[`AddProperty matches snapshot 1`] = `
           required=""
         >
           <option
+            value="Bungalow"
+          >
+            Bungalow
+          </option>
+          <option
+            value="Cottage"
+          >
+            Cottage
+          </option>
+          <option
+            value="End of Terrace"
+          >
+            End of Terrace
+          </option>
+          <option
             value="Flat"
           >
             Flat
@@ -47,21 +62,6 @@ exports[`AddProperty matches snapshot 1`] = `
             value="Terraced"
           >
             Terraced
-          </option>
-          <option
-            value="End of Terrace"
-          >
-            End of Terrace
-          </option>
-          <option
-            value="Cottage"
-          >
-            Cottage
-          </option>
-          <option
-            value="Bungalow"
-          >
-            Bungalow
           </option>
           <option
             disabled=""
@@ -123,24 +123,24 @@ exports[`AddProperty matches snapshot 1`] = `
           required=""
         >
           <option
-            value="Manchester"
-          >
-            Manchester
-          </option>
-          <option
             value="Leeds"
           >
             Leeds
           </option>
           <option
-            value="Sheffield"
-          >
-            Sheffield
-          </option>
-          <option
             value="Liverpool"
           >
             Liverpool
+          </option>
+          <option
+            value="Manchester"
+          >
+            Manchester
+          </option>
+          <option
+            value="Sheffield"
+          >
+            Sheffield
           </option>
           <option
             disabled=""
@@ -170,6 +170,6 @@ exports[`AddProperty matches snapshot 1`] = `
         Add
       </button>
     </form>
-  </main>
+  </div>
 </DocumentFragment>
 `;
