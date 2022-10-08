@@ -34,7 +34,7 @@ describe("SideBar", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("is applied a 'closed' class if the given isSideBarOpen prop is false", () => {
+  it("has a 'closed' class if the given isSideBarOpen prop is false", () => {
     renderClosedSideBar();
 
     expect(
@@ -42,7 +42,7 @@ describe("SideBar", () => {
     ).toBeTruthy();
   });
 
-  it("is applied an 'open' class if the given isSideBarOpen prop is true", () => {
+  it("has an 'open' class if the given isSideBarOpen prop is true", () => {
     renderOpenSideBar();
 
     expect(
@@ -52,8 +52,9 @@ describe("SideBar", () => {
 
   it("renders menu button", () => {
     renderClosedSideBar();
+    const menuButton = screen.getByRole("button", { name: /menu/i });
 
-    expect(screen.getByRole("button", { name: /menu/i })).toBeInTheDocument();
+    expect(menuButton).toBeInTheDocument();
   });
 
   it("menu button opens the sidebar if it is closed", () => {
@@ -74,8 +75,14 @@ describe("SideBar", () => {
     expect(props.setIsSideBarOpen).toHaveBeenCalledWith(false);
   });
 
+  it("renders a heading of city for the city links", () => {
+    renderOpenSideBar();
+
+    expect(screen.getByRole("heading", { name: "City" })).toBeInTheDocument();
+  });
+
   it("renders a 'wildcard' link that does not filter", () => {
-    renderClosedSideBar();
+    renderOpenSideBar();
     const wildcardLink = screen.getByRole("link", { name: /all/i });
 
     expect(wildcardLink).toBeInTheDocument();
@@ -83,7 +90,7 @@ describe("SideBar", () => {
   });
 
   it("renders a link for each of the given cities", () => {
-    renderClosedSideBar();
+    renderOpenSideBar();
 
     const cityLinks = screen
       .getAllByRole("link")
@@ -99,7 +106,7 @@ describe("SideBar", () => {
   });
 
   it("the currently 'active' link is styled differently to the others", () => {
-    renderClosedSideBar();
+    renderOpenSideBar();
     const activeLink = screen
       .getAllByRole("link")
       .find(
@@ -111,12 +118,12 @@ describe("SideBar", () => {
   });
 
   it("each link closes the SideBar when clicked", () => {
-    renderClosedSideBar();
+    renderOpenSideBar();
     const links = screen.getAllByRole("link");
 
     links.forEach((link) => fireEvent.click(link));
 
-    expect(props.setIsSideBarOpen.mock.calls.length).toBe(links.length);
+    expect(props.setIsSideBarOpen).toHaveBeenCalledTimes(links.length);
     expect(
       props.setIsSideBarOpen.mock.calls.every(
         ([argument]) => argument === false
