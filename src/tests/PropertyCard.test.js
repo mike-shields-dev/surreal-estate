@@ -5,9 +5,9 @@ import PropertyCard from "../components/PropertyCard";
 const props = {
   title: "2 bedroom period property",
   type: "Flat",
-  bedrooms: 2,
-  bathrooms: 3,
-  price: 1000,
+  bedrooms: "2",
+  bathrooms: "3",
+  price: "1000",
   city: "Liverpool",
   email: "example@example.com",
 };

@@ -5,6 +5,8 @@ nav {
   justify-content: space-between;
   background: #fff;
   padding-right: 1rem;
+  position: sticky;
+  top: 0;
 }
 
 .navbar__brand {
@@ -31,5 +33,4 @@ nav {
   gap: 1rem;
   margin: 0;
   padding: 0;
-  list-style: none;
 }

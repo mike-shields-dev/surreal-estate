@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
+import SideBar from "./SideBar";
 import styles from "../styles/Properties.module.css";
 import getProperties from "../requests/getProperties";
-
-const initialState = {
-  alert: {
-    message: "",
-    isSuccess: false,
-  },
-};
+import cities from "../config/cities.json";
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [alert, setAlert] = useState(initialState.alert);
+  const [alert, setAlert] = useState({
+    message: "",
+    isSuccess: false,
+  });
+  const { pathname, search } = useLocation();
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const source = axios.CancelToken.source();
     (async () => {
       try {
-        const { data } = await getProperties(source);
+        const { data } = await getProperties({ search, source });
         setProperties(data);
-        setLoading(false);
         setAlert({ message: "", isSuccess: true });
       } catch (err) {
         setAlert({
@@ -34,18 +32,23 @@ const Properties = () => {
       }
     })();
     return () => {
-      source.cancel("Previous request cancelled");
+      source.cancel();
     };
-  }, []);
+  }, [search]);
 
   return (
     <>
-      <Alert {...alert} />
-      <main className={styles.properties} title="properties">
-        {properties.map((property) => (
-          <PropertyCard key={property._id} {...property} />
-        ))}
-      </main>
+      <SideBar
+        {...{ pathname, search, cities, isSideBarOpen, setIsSideBarOpen }}
+      />
+      <div className={styles.properties} title="properties">
+        <Alert {...alert} />
+        <div className={styles.properties__grid}>
+          {properties.map((property) => (
+            <PropertyCard key={property._id} {...property} />
+          ))}
+        </div>
+      </div>
     </>
   );
 };
