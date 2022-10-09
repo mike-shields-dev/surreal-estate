@@ -6,7 +6,7 @@ import TextBox from "./TextBox";
 import Alert from "./Alert";
 import cities from "../config/cities.json";
 import types from "../config/types.json";
-import useAddProperty from "../requests/useAddProperty";
+import useAPI from "../requests/useAPI";
 
 const initialState = {
   alert: {
@@ -27,11 +27,11 @@ const initialState = {
 const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
-  const [{ response, error, controller }, addProperty] = useAddProperty();
+  const { request, error, response, controller } = useAPI();
 
   const handleAddProperty = async (event) => {
     event.preventDefault();
-    addProperty(fields);
+    request({ method: "post", payload: fields });
   };
 
   const handleFieldChange = (event) => {
@@ -40,8 +40,7 @@ const AddProperty = () => {
   };
 
   useEffect(() => {
-    let message;
-    let isSuccess;
+    let { message, isSuccess } = initialState.alert;
 
     if (error) {
       message = "Network error, please check your internet connection.";
@@ -60,9 +59,7 @@ const AddProperty = () => {
     setAlert({ message, isSuccess });
   }, [response, error]);
 
-  useEffect(() => {
-    return () => controller.abort();
-  }, []);
+  useEffect(() => () => controller?.abort(), []);
 
   return (
     <div className={styles["add-property"]} title="add property">
