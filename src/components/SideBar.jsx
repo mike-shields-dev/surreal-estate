@@ -1,18 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import qs from "qs";
+import { Link, useLocation } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 import styles from "../styles/SideBar.module.css";
 
-const SideBar = ({
-  pathname,
-  search,
-  cities,
-  isSideBarOpen,
-  setIsSideBarOpen,
-}) => {
+const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
+  const { search } = useLocation();
+  const urlParams = qs.parse(search, {
+    ignoreQueryPrefix: true,
+  });
+
+  const buildQueryString = (operation, valueObj) =>
+    qs.stringify(
+      {
+        ...urlParams,
+        [operation]: JSON.stringify(valueObj),
+      },
+      {
+        addQueryPrefix: true,
+        encode: false,
+      }
+    );
+
   const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
-  const currentUrl = pathname + search;
 
   return (
     <aside
@@ -35,6 +46,7 @@ const SideBar = ({
           title={isSideBarOpen ? "close menu" : "open menu"}
         />
       </button>
+
       <section className={styles.sidebar__section}>
         <h3>City</h3>
         <ul className={styles["sidebar__link-list"]}>
@@ -43,30 +55,34 @@ const SideBar = ({
               className={
                 styles[
                   `sidebar__link${
-                    currentUrl === "/properties" ? "--active" : ""
+                    !urlParams.query || `${urlParams.query}` === "{}"
+                      ? "--active"
+                      : ""
                   }`
                 ]
               }
               onClick={() => setIsSideBarOpen(false)}
-              to="/properties"
+              to={buildQueryString("query", {})}
             >
               All
             </Link>
           </li>
           {cities.map((city) => {
-            const targetUrl = `/properties?query={"city":"${city}"}`;
+            const queryString = buildQueryString("query", { city });
             return (
               <li key={`${city}-city-filter-link`}>
                 <Link
                   className={
                     styles[
                       `sidebar__link${
-                        currentUrl === targetUrl ? "--active" : ""
+                        urlParams.query === `{"city":"${city}"}`
+                          ? "--active"
+                          : ""
                       }`
                     ]
                   }
                   onClick={() => setIsSideBarOpen(false)}
-                  to={targetUrl}
+                  to={queryString}
                 >
                   {city}
                 </Link>
@@ -75,13 +91,49 @@ const SideBar = ({
           })}
         </ul>
       </section>
+
+      <section className={styles.sidebar__section}>
+        <h3>Price</h3>
+        <ul className={styles["sidebar__link-list"]}>
+          <li>
+            <Link
+              className={
+                styles[
+                  `sidebar__link${
+                    !urlParams.sort || urlParams.sort === `{"price":-1}`
+                      ? "--active"
+                      : ""
+                  }`
+                ]
+              }
+              onClick={() => setIsSideBarOpen(false)}
+              to={buildQueryString("sort", { price: -1 })}
+            >
+              Ascending
+            </Link>
+          </li>
+          <li>
+            <Link
+              className={
+                styles[
+                  `sidebar__link${
+                    urlParams.sort === `{"price":1}` ? "--active" : ""
+                  }`
+                ]
+              }
+              onClick={() => setIsSideBarOpen(false)}
+              to={buildQueryString("sort", { price: 1 })}
+            >
+              Descending
+            </Link>
+          </li>
+        </ul>
+      </section>
     </aside>
   );
 };
 
 SideBar.propTypes = {
-  pathname: PropTypes.string.isRequired,
-  search: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   isSideBarOpen: PropTypes.bool.isRequired,
   setIsSideBarOpen: PropTypes.func.isRequired,

@@ -49,8 +49,8 @@ exports[`SideBar matches snapshot 1`] = `
       >
         <li>
           <a
-            class="sidebar__link"
-            href="/properties"
+            class="sidebar__link--active"
+            href="/?query={}"
           >
             All
           </a>
@@ -58,7 +58,7 @@ exports[`SideBar matches snapshot 1`] = `
         <li>
           <a
             class="sidebar__link"
-            href="/properties?query={\\"city\\":\\"Leeds\\"}"
+            href="/?query={\\"city\\":\\"Leeds\\"}"
           >
             Leeds
           </a>
@@ -66,15 +66,15 @@ exports[`SideBar matches snapshot 1`] = `
         <li>
           <a
             class="sidebar__link"
-            href="/properties?query={\\"city\\":\\"Liverpool\\"}"
+            href="/?query={\\"city\\":\\"Liverpool\\"}"
           >
             Liverpool
           </a>
         </li>
         <li>
           <a
-            class="sidebar__link--active"
-            href="/properties?query={\\"city\\":\\"Manchester\\"}"
+            class="sidebar__link"
+            href="/?query={\\"city\\":\\"Manchester\\"}"
           >
             Manchester
           </a>
@@ -82,9 +82,36 @@ exports[`SideBar matches snapshot 1`] = `
         <li>
           <a
             class="sidebar__link"
-            href="/properties?query={\\"city\\":\\"Sheffield\\"}"
+            href="/?query={\\"city\\":\\"Sheffield\\"}"
           >
             Sheffield
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section
+      class="sidebar__section"
+    >
+      <h3>
+        Price
+      </h3>
+      <ul
+        class="sidebar__link-list"
+      >
+        <li>
+          <a
+            class="sidebar__link--active"
+            href="/?sort={\\"price\\":-1}"
+          >
+            Ascending
+          </a>
+        </li>
+        <li>
+          <a
+            class="sidebar__link"
+            href="/?sort={\\"price\\":1}"
+          >
+            Descending
           </a>
         </li>
       </ul>
