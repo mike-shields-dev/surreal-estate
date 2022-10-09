@@ -4,8 +4,10 @@ import styles from "../styles/TextBox.module.css";
 
 const TextBox = ({ field, maxLength, onChange, value, type }) => {
   return (
-    <label htmlFor={field} className={styles.textbox__label}>
-      {field}
+    <div className={styles.textbox}>
+      <label htmlFor={field} className={styles.textbox__label}>
+        {field}
+      </label>
       <input
         required
         id={field}
@@ -15,7 +17,7 @@ const TextBox = ({ field, maxLength, onChange, value, type }) => {
         value={value}
         maxLength={maxLength}
       />
-    </label>
+    </div>
   );
 };
 

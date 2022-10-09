@@ -1,5 +1,8 @@
-.textbox__label {
+.textbox {
     display: grid;
     gap: 0.25em;
+}
+
+.textbox__label {
     text-transform: capitalize;
 }
