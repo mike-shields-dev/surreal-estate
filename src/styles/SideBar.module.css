@@ -4,7 +4,7 @@
   position: fixed;
   background: var(--clr-brand);
   right: 10rem;
-  width: 12rem;
+  width: 18rem;
   transition: all 500ms ease;
   z-index: 1;
 }
@@ -14,7 +14,7 @@
 }
 
 .sidebar--closed {
-  transform: translateX(20rem);
+  transform: translateX(26rem);
 }
 
 .sidebar__button {
@@ -45,7 +45,7 @@
 .sidebar__section {
   display: grid;
   gap: 1rem;
-  padding: 1rem 2rem;
+  padding: 0 2rem 1rem;
 }
 
 .sidebar__link-list {
@@ -53,7 +53,51 @@
   gap: 1rem;
 }
 
+.sidebar__link {
+  padding-bottom: 0.5em;
+}
+
 .sidebar__link--active {
   color: var(--font-clr-light);
   font-weight: bold;
+}
+
+.sidebar__form {
+  position: relative;
+}
+
+.sidebar__form label {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.sidebar__form input {
+  margin-right: 2rem;
+}
+
+.sidebar__form button {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-clr-dark);
+  color: var(--font-clr-dark);
+  right: 0;
+  top: 0;
+}
+
+.sidebar__form button span {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

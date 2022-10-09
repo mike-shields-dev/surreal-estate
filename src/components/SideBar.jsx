@@ -24,6 +24,14 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
       }
     );
 
+  const handleSearchChange = (event) => {
+    setTitleSearch(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+  };
+
   const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
 
   return (
@@ -48,6 +56,22 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
         />
       </button>
 
+      <section className={styles.sidebar__section}>
+        <form className={styles.sidebar__form} onSubmit={handleSearchSubmit}>
+          <TextBox
+            field="title"
+            onChange={handleSearchChange}
+            value={titleSearch}
+            type="search"
+          />
+          <button type="submit">
+            <FaSearch />
+            <span className={styles["sidebar__search-submit-button"]}>
+              Search
+            </span>
+          </button>
+        </form>
+      </section>
       <section className={styles.sidebar__section}>
         <h3>City</h3>
         <ul className={styles["sidebar__link-list"]}>
