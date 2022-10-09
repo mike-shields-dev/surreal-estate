@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
 import TextBox from "./TextBox";
 import Alert from "./Alert";
-import addProperty from "../requests/addProperty";
 import cities from "../config/cities.json";
 import types from "../config/types.json";
+import useAddProperty from "../requests/useAddProperty";
 
 const initialState = {
   alert: {
@@ -27,23 +27,42 @@ const initialState = {
 const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
+  const [{ response, error, controller }, addProperty] = useAddProperty();
 
   const handleAddProperty = async (event) => {
     event.preventDefault();
-    const isPropertyAdded = await addProperty(fields);
-    setAlert({
-      message: isPropertyAdded
-        ? "Property added"
-        : "Something went wrong, please try again later",
-      isSuccess: isPropertyAdded,
-    });
-    setFields(initialState.fields);
+    addProperty(fields);
   };
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
     setFields({ ...fields, [name]: value });
   };
+
+  useEffect(() => {
+    let message;
+    let isSuccess;
+
+    if (error) {
+      message = "Network error, please check your internet connection.";
+      isSuccess = false;
+    }
+    if (response) {
+      if (response.status === 201) {
+        message = "Property added, thank you.";
+        isSuccess = true;
+      } else {
+        message =
+          "Server error, please try again later or contact the administrator.";
+        isSuccess = false;
+      }
+    }
+    setAlert({ message, isSuccess });
+  }, [response, error]);
+
+  useEffect(() => {
+    return () => controller.abort();
+  }, []);
 
   return (
     <div className={styles["add-property"]} title="add property">
