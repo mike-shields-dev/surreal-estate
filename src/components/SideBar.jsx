@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import qs from "qs";
-import { Link, useLocation } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaPlus, FaSearch } from "react-icons/fa";
 import styles from "../styles/SideBar.module.css";
+import TextBox from "./TextBox";
 
 const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
-  const { search } = useLocation();
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
   const urlParams = qs.parse(search, {
     ignoreQueryPrefix: true,
   });
   const { query, sort } = urlParams;
+  const [titleSearch, setTitleSearch] = useState("");
 
   const buildParamsString = (operation, valueObj) =>
     qs.stringify(
@@ -30,6 +33,12 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+    const paramsString = buildParamsString("query", {
+      title: { $regex: titleSearch },
+    });
+    const newUrl = pathname + paramsString;
+    console.log({ newUrl });
+    navigate(newUrl);
   };
 
   const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
