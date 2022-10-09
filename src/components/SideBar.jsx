@@ -10,8 +10,9 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
   const urlParams = qs.parse(search, {
     ignoreQueryPrefix: true,
   });
+  const { query, sort } = urlParams;
 
-  const buildQueryString = (operation, valueObj) =>
+  const buildParamsString = (operation, valueObj) =>
     qs.stringify(
       {
         ...urlParams,
@@ -55,29 +56,25 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
               className={
                 styles[
                   `sidebar__link${
-                    !urlParams.query || `${urlParams.query}` === "{}"
-                      ? "--active"
-                      : ""
+                    !query || `${query}` === "{}" ? "--active" : ""
                   }`
                 ]
               }
               onClick={() => setIsSideBarOpen(false)}
-              to={buildQueryString("query", {})}
+              to={buildParamsString("query", {})}
             >
               All
             </Link>
           </li>
           {cities.map((city) => {
-            const queryString = buildQueryString("query", { city });
+            const queryString = buildParamsString("query", { city });
             return (
               <li key={`${city}-city-filter-link`}>
                 <Link
                   className={
                     styles[
                       `sidebar__link${
-                        urlParams.query === `{"city":"${city}"}`
-                          ? "--active"
-                          : ""
+                        query === `{"city":"${city}"}` ? "--active" : ""
                       }`
                     ]
                   }
@@ -99,15 +96,11 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
             <Link
               className={
                 styles[
-                  `sidebar__link${
-                    !urlParams.sort || urlParams.sort === `{"price":-1}`
-                      ? "--active"
-                      : ""
-                  }`
+                  `sidebar__link${sort === `{"price":-1}` ? "--active" : ""}`
                 ]
               }
               onClick={() => setIsSideBarOpen(false)}
-              to={buildQueryString("sort", { price: -1 })}
+              to={buildParamsString("sort", { price: -1 })}
             >
               Ascending
             </Link>
@@ -116,13 +109,11 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
             <Link
               className={
                 styles[
-                  `sidebar__link${
-                    urlParams.sort === `{"price":1}` ? "--active" : ""
-                  }`
+                  `sidebar__link${sort === `{"price":1}` ? "--active" : ""}`
                 ]
               }
               onClick={() => setIsSideBarOpen(false)}
-              to={buildQueryString("sort", { price: 1 })}
+              to={buildParamsString("sort", { price: 1 })}
             >
               Descending
             </Link>
