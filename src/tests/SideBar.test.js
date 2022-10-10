@@ -79,14 +79,6 @@ describe("SideBar", () => {
     expect(screen.getByRole("heading", { name: "City" })).toBeInTheDocument();
   });
 
-  it("renders a 'wildcard' link that does not filter", () => {
-    renderOpenSideBar();
-    const wildcardLink = screen.getByRole("link", { name: /all/i });
-
-    expect(wildcardLink).toBeInTheDocument();
-    expect(wildcardLink).toHaveAttribute("href", props.pathname);
-  });
-
   it("renders a link for each of the given cities", () => {
     renderOpenSideBar();
 
@@ -103,29 +95,14 @@ describe("SideBar", () => {
     });
   });
 
-  xit("the currently 'active' link is styled differently to the others", () => {
+  it("renders links for sorting by price", () => {
     renderOpenSideBar();
-    const activeLink = screen
-      .getAllByRole("link")
-      .find(
-        (link) =>
-          link.getAttribute("href") === `${props.pathname}${props.search}`
-      );
 
-    expect(activeLink.getAttribute("class").includes("active")).toBeTruthy();
-  });
-
-  it("each link closes the SideBar when clicked", () => {
-    renderOpenSideBar();
-    const links = screen.getAllByRole("link");
-
-    links.forEach((link) => fireEvent.click(link));
-
-    expect(props.setIsSideBarOpen).toHaveBeenCalledTimes(links.length);
     expect(
-      props.setIsSideBarOpen.mock.calls.every(
-        ([argument]) => argument === false
-      )
-    );
+      screen.getByRole("link", { name: /ascending/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /descending/i })
+    ).toBeInTheDocument();
   });
 });

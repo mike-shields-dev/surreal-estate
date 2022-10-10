@@ -8,24 +8,27 @@ import TextBox from "./TextBox";
 
 const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
   const navigate = useNavigate();
-  const { pathname, search } = useLocation();
-  const urlParams = qs.parse(search, {
+  const { search } = useLocation();
+  const [titleSearch, setTitleSearch] = useState("");
+  const currentUrlParams = qs.parse(search, {
     ignoreQueryPrefix: true,
   });
-  const { query, sort } = urlParams;
-  const [titleSearch, setTitleSearch] = useState("");
+  const { query, sort } = currentUrlParams;
+  console.log({ query, sort });
 
-  const buildParamsString = (operation, valueObj) =>
-    qs.stringify(
-      {
-        ...urlParams,
-        [operation]: JSON.stringify(valueObj),
-      },
-      {
-        addQueryPrefix: true,
-        encode: false,
-      }
-    );
+  const buildParamsString = (operation, valueObj) => {
+    const newUrlParams = {
+      ...currentUrlParams,
+      [operation]: JSON.stringify({
+        ...JSON.parse(currentUrlParams[operation] || "{}"),
+        ...valueObj,
+      }),
+    };
+    return qs.stringify(newUrlParams, {
+      addQueryPrefix: true,
+      encode: false,
+    });
+  };
 
   const handleSearchChange = (event) => {
     setTitleSearch(event.target.value);
@@ -33,12 +36,17 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    const paramsString = buildParamsString("query", {
-      title: { $regex: titleSearch },
-    });
-    const newUrl = pathname + paramsString;
-    console.log({ newUrl });
-    navigate(newUrl);
+    let newUrlParamsString;
+    if (titleSearch) {
+      newUrlParamsString = buildParamsString("query", {
+        title: { $regex: titleSearch },
+      });
+    } else {
+      newUrlParamsString = buildParamsString("query", {
+        title: { $regex: ".*" },
+      });
+    }
+    navigate(newUrlParamsString);
   };
 
   const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
@@ -81,24 +89,12 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           </button>
         </form>
       </section>
+      <br />
+      <hr className={styles.sidebar__separator} />
+      <br />
       <section className={styles.sidebar__section}>
-        <h3>City</h3>
+        <h3 className={styles.sidebar__heading}>City</h3>
         <ul className={styles["sidebar__link-list"]}>
-          <li>
-            <Link
-              className={
-                styles[
-                  `sidebar__link${
-                    !query || `${query}` === "{}" ? "--active" : ""
-                  }`
-                ]
-              }
-              onClick={() => setIsSideBarOpen(false)}
-              to={buildParamsString("query", {})}
-            >
-              All
-            </Link>
-          </li>
           {cities.map((city) => {
             const queryString = buildParamsString("query", { city });
             return (
@@ -107,11 +103,12 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
                   className={
                     styles[
                       `sidebar__link${
-                        query === `{"city":"${city}"}` ? "--active" : ""
+                        query && query.includes(`"city":"${city}"`)
+                          ? "--active"
+                          : ""
                       }`
                     ]
                   }
-                  onClick={() => setIsSideBarOpen(false)}
                   to={queryString}
                 >
                   {city}
@@ -121,19 +118,21 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           })}
         </ul>
       </section>
-
+      <hr className={styles.sidebar__separator} />
+      <br />
       <section className={styles.sidebar__section}>
-        <h3>Price</h3>
+        <h3 className={styles.sidebar__heading}>Price</h3>
         <ul className={styles["sidebar__link-list"]}>
           <li>
             <Link
               className={
                 styles[
-                  `sidebar__link${sort === `{"price":-1}` ? "--active" : ""}`
+                  `sidebar__link${
+                    sort && sort.includes(`"price":1`) ? "--active" : ""
+                  }`
                 ]
               }
-              onClick={() => setIsSideBarOpen(false)}
-              to={buildParamsString("sort", { price: -1 })}
+              to={buildParamsString("sort", { price: 1 })}
             >
               Ascending
             </Link>
@@ -142,17 +141,20 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
             <Link
               className={
                 styles[
-                  `sidebar__link${sort === `{"price":1}` ? "--active" : ""}`
+                  `sidebar__link${
+                    sort && sort.includes(`"price":-1`) ? "--active" : ""
+                  }`
                 ]
               }
-              onClick={() => setIsSideBarOpen(false)}
-              to={buildParamsString("sort", { price: 1 })}
+              to={buildParamsString("sort", { price: -1 })}
             >
               Descending
             </Link>
           </li>
         </ul>
       </section>
+      <hr className={styles.sidebar__separator} />
+      <br />
     </aside>
   );
 };

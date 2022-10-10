@@ -41,20 +41,65 @@ exports[`SideBar matches snapshot 1`] = `
     <section
       class="sidebar__section"
     >
-      <h3>
+      <form
+        class="sidebar__form"
+      >
+        <div
+          class="textbox"
+        >
+          <label
+            class="textbox__label"
+            for="title"
+          >
+            title
+          </label>
+          <input
+            id="title"
+            name="title"
+            type="search"
+            value=""
+          />
+        </div>
+        <button
+          type="submit"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            />
+          </svg>
+          <span
+            class="sidebar__search-submit-button"
+          >
+            Search
+          </span>
+        </button>
+      </form>
+    </section>
+    <br />
+    <hr
+      class="sidebar__separator"
+    />
+    <br />
+    <section
+      class="sidebar__section"
+    >
+      <h3
+        class="sidebar__heading"
+      >
         City
       </h3>
       <ul
         class="sidebar__link-list"
       >
-        <li>
-          <a
-            class="sidebar__link--active"
-            href="/?query={}"
-          >
-            All
-          </a>
-        </li>
         <li>
           <a
             class="sidebar__link"
@@ -89,10 +134,16 @@ exports[`SideBar matches snapshot 1`] = `
         </li>
       </ul>
     </section>
+    <hr
+      class="sidebar__separator"
+    />
+    <br />
     <section
       class="sidebar__section"
     >
-      <h3>
+      <h3
+        class="sidebar__heading"
+      >
         Price
       </h3>
       <ul
@@ -100,8 +151,8 @@ exports[`SideBar matches snapshot 1`] = `
       >
         <li>
           <a
-            class="sidebar__link--active"
-            href="/?sort={\\"price\\":-1}"
+            class="sidebar__link"
+            href="/?sort={\\"price\\":1}"
           >
             Ascending
           </a>
@@ -109,13 +160,17 @@ exports[`SideBar matches snapshot 1`] = `
         <li>
           <a
             class="sidebar__link"
-            href="/?sort={\\"price\\":1}"
+            href="/?sort={\\"price\\":-1}"
           >
             Descending
           </a>
         </li>
       </ul>
     </section>
+    <hr
+      class="sidebar__separator"
+    />
+    <br />
   </aside>
 </DocumentFragment>
 `;
