@@ -13,6 +13,8 @@ const useAPI = () => {
   const request = ({ method, payload, search }) => {
     controller = new AbortController();
     setIsLoading(true);
+    setResponse(null);
+    setError(null);
 
     if (method.match(/get/i)) {
       axios
@@ -20,7 +22,7 @@ const useAPI = () => {
           signal: controller.signal,
         })
         .then((res) => setResponse(res))
-        .catch((err) => setError(err))
+        .catch((err) => setError(err.message))
         .finally(() => setIsLoading(false));
     }
 
