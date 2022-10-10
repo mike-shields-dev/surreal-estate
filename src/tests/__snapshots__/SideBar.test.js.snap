@@ -8,7 +8,7 @@ exports[`SideBar matches snapshot 1`] = `
         sidebar--closed"
   >
     <button
-      class="sidebar__button"
+      class="sidebar__toggle-button"
       type="button"
     >
       <span
@@ -83,7 +83,6 @@ exports[`SideBar matches snapshot 1`] = `
         </button>
       </form>
     </section>
-    <hr />
     <section
       class="sidebar__section"
     >
@@ -129,7 +128,6 @@ exports[`SideBar matches snapshot 1`] = `
         </li>
       </ul>
     </section>
-    <hr />
     <section
       class="sidebar__section"
     >
@@ -159,6 +157,12 @@ exports[`SideBar matches snapshot 1`] = `
         </li>
       </ul>
     </section>
+    <button
+      class="sidebar__reset-button"
+      type="button"
+    >
+      reset
+    </button>
   </aside>
 </DocumentFragment>
 `;
