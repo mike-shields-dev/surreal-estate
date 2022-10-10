@@ -26,21 +26,20 @@ const Properties = () => {
   }, [search]);
 
   useEffect(() => {
+    console.log({ error, response });
     let { message, isSuccess } = initialState.alert;
 
     if (error) {
-      message = "Network error, please check your internet connection.";
-      isSuccess = false;
+      message = error.message;
     }
-    if (response) {
-      if (response.status === 200) {
-        setProperties(response.data);
-      }
+    if (response && response.statusText.match(/ok/i)) {
+      isSuccess = true;
+      setProperties(response.data);
     }
     setAlert({ message, isSuccess });
   }, [response, error]);
 
-  useEffect(() => controller?.abort(), []);
+  useEffect(() => controller && controller.abort(), []);
 
   return (
     <>
