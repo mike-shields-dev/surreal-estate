@@ -68,7 +68,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           className={`
             ${styles.sidebar__icon}
             ${styles[`sidebar__icon${isSideBarOpen ? "--open" : "--closed"}`]}`}
-          focusable="false"
           title={isSideBarOpen ? "close menu" : "open menu"}
         />
       </button>
