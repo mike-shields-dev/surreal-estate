@@ -22,7 +22,6 @@ exports[`SideBar matches snapshot 1`] = `
             sidebar__icon
             sidebar__icon--closed"
         fill="currentColor"
-        focusable="false"
         height="1em"
         stroke="currentColor"
         stroke-width="0"
