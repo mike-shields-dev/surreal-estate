@@ -43,23 +43,16 @@ const AddProperty = () => {
     let { message, isSuccess } = initialState.alert;
 
     if (error) {
-      message = "Network error, please check your internet connection.";
-      isSuccess = false;
+      message = error.message;
     }
-    if (response) {
-      if (response.status === 201) {
-        message = "Property added, thank you.";
-        isSuccess = true;
-      } else {
-        message =
-          "Server error, please try again later or contact the administrator.";
-        isSuccess = false;
-      }
+    if (response && response.status === 201) {
+      message = response.statusText;
+      isSuccess = true;
     }
     setAlert({ message, isSuccess });
   }, [response, error]);
 
-  useEffect(() => () => controller?.abort(), []);
+  useEffect(() => () => controller && controller.abort(), []);
 
   return (
     <div className={styles["add-property"]} title="add property">
