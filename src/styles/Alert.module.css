@@ -1,24 +1,12 @@
-.alert--success {
-  color: var(--clr-success);
+.Alert {
   padding: 0.25em;
   position: relative;
 }
 
-.alert--success::before {
-  background: currentColor;
-  content: "";
-  opacity: 0.1;
-  position: absolute;
-  inset: 0 0 0 0;
-}
+.success { color: var(--clr-success) }
+.error { color: var(--clr-danger) }
 
-.alert--error {
-  color: var(--clr-danger);
-  padding: 0.25em;
-  position: relative;
-}
-
-.alert--error::before {
+.Alert::before {
   background: currentColor;
   content: "";
   inset: 0 0 0 0;

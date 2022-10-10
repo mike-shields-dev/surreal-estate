@@ -31,15 +31,17 @@ describe("Alert", () => {
     const { asFragment } = render(<Alert {...successProps} />);
 
     expect(asFragment()).toMatchSnapshot();
-    expect(screen.getByText(successProps.message)).toHaveClass(
-      "alert--success"
-    );
+    expect(
+      screen.getByText(successProps.message).getAttribute("class")
+    ).toMatch(/success/i);
   });
 
   it("has the correct class name when given success prop equal to false", () => {
     const { asFragment } = render(<Alert {...errorProps} />);
 
     expect(asFragment()).toMatchSnapshot();
-    expect(screen.getByText(errorProps.message)).toHaveClass("alert--error");
+    expect(screen.getByText(errorProps.message).getAttribute("class")).toMatch(
+      /error/i
+    );
   });
 });

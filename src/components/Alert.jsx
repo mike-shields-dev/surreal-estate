@@ -6,7 +6,10 @@ const Alert = ({ message, isSuccess }) => {
   if (!message) return null;
   return (
     <div
-      className={isSuccess ? css["alert--success"] : css["alert--error"]}
+      className={`
+      ${css.Alert} 
+      ${css[`${isSuccess ? "success" : "error"}`]}
+      `}
       title="alert"
     >
       {message}
