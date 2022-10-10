@@ -21,11 +21,11 @@
   transition: all 500ms ease;
 }
 
-.sidebar--closed > *:not(button) {
+.sidebar--closed > *:not(.sidebar__toggle-button) {
   opacity: 0;
 }
 
-.sidebar__button {
+.sidebar__toggle-button {
   background: none;
   position: sticky;
   top: 0;
@@ -54,6 +54,7 @@
   display: grid;
   gap: 1rem;
   padding: 2rem;
+  border-bottom: 1px solid var(--bg-clr-dark);
 }
 
 .sidebar__section:first-of-type {
@@ -108,4 +109,11 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.sidebar__reset-button {
+  font-size: 1rem;
+  margin: 2rem 2rem;
+  color: var(--font-clr-dark);
+  background: var(--bg-clr-light);
 }

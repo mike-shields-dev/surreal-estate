@@ -60,7 +60,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
       <button
         onClick={toggleSideBar}
         type="button"
-        className={styles.sidebar__button}
+        className={styles["sidebar__toggle-button"]}
       >
         <span className="visibly-hidden">Menu</span>
         <FaPlus
@@ -88,7 +88,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           </button>
         </form>
       </section>
-      <hr />
       <section className={styles.sidebar__section}>
         <h3 className={styles.sidebar__heading}>City</h3>
         <ul className={styles["sidebar__link-list"]}>
@@ -115,7 +114,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           })}
         </ul>
       </section>
-      <hr />
       <section className={styles.sidebar__section}>
         <h3 className={styles.sidebar__heading}>Price</h3>
         <ul className={styles["sidebar__link-list"]}>
@@ -149,6 +147,13 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           </li>
         </ul>
       </section>
+      <button
+        className={styles["sidebar__reset-button"]}
+        type="button"
+        onClick={() => navigate("")}
+      >
+        reset
+      </button>
     </aside>
   );
 };
