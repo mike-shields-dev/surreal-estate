@@ -51,6 +51,11 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
 
   const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
 
+  const handleReset = () => {
+    navigate("");
+    setTitleSearch("");
+  };
+
   return (
     <aside
       className={`
@@ -150,7 +155,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
       <button
         className={styles["sidebar__reset-button"]}
         type="button"
-        onClick={() => navigate("")}
+        onClick={handleReset}
       >
         reset
       </button>
