@@ -84,11 +84,7 @@ exports[`SideBar matches snapshot 1`] = `
         </button>
       </form>
     </section>
-    <br />
-    <hr
-      class="sidebar__separator"
-    />
-    <br />
+    <hr />
     <section
       class="sidebar__section"
     >
@@ -134,10 +130,7 @@ exports[`SideBar matches snapshot 1`] = `
         </li>
       </ul>
     </section>
-    <hr
-      class="sidebar__separator"
-    />
-    <br />
+    <hr />
     <section
       class="sidebar__section"
     >
@@ -167,10 +160,6 @@ exports[`SideBar matches snapshot 1`] = `
         </li>
       </ul>
     </section>
-    <hr
-      class="sidebar__separator"
-    />
-    <br />
   </aside>
 </DocumentFragment>
 `;
