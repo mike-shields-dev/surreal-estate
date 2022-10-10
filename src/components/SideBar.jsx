@@ -89,11 +89,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           </button>
         </form>
       </section>
-      <br />
-      <hr
-        className={isSideBarOpen ? "" : styles["sidebar__separator--hidden"]}
-      />
-      <br />
+      <hr />
       <section className={styles.sidebar__section}>
         <h3 className={styles.sidebar__heading}>City</h3>
         <ul className={styles["sidebar__link-list"]}>
@@ -120,10 +116,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           })}
         </ul>
       </section>
-      <hr
-        className={isSideBarOpen ? "" : styles["sidebar__separator--hidden"]}
-      />
-      <br />
+      <hr />
       <section className={styles.sidebar__section}>
         <h3 className={styles.sidebar__heading}>Price</h3>
         <ul className={styles["sidebar__link-list"]}>
@@ -157,10 +150,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           </li>
         </ul>
       </section>
-      <hr
-        className={isSideBarOpen ? "" : styles["sidebar__separator--hidden"]}
-      />
-      <br />
     </aside>
   );
 };

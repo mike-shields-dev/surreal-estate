@@ -17,6 +17,14 @@
   transform: translateX(26rem);
 }
 
+.sidebar *:not(a) {
+  transition: all 500ms ease;
+}
+
+.sidebar--closed > *:not(button) {
+  opacity: 0;
+}
+
 .sidebar__button {
   background: none;
   position: sticky;
@@ -45,7 +53,11 @@
 .sidebar__section {
   display: grid;
   gap: 1rem;
-  padding: 0 2rem 1rem;
+  padding: 2rem;
+}
+
+.sidebar__section:first-of-type {
+  padding-top: 0;
 }
 
 .sidebar__link-list {
