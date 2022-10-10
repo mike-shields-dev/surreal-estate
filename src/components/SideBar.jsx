@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import qs from "qs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaPlus, FaSearch } from "react-icons/fa";
-import styles from "../styles/SideBar.module.css";
+import css from "../styles/SideBar.module.css";
 import TextBox from "./TextBox";
 
 const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
@@ -59,26 +59,26 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
   return (
     <aside
       className={`
-        ${styles.sidebar} 
-        ${styles[`sidebar${isSideBarOpen ? "--open" : "--closed"}`]}`}
+        ${css.sidebar} 
+        ${css[`sidebar${isSideBarOpen ? "--open" : "--closed"}`]}`}
     >
       <button
         onClick={toggleSideBar}
         type="button"
-        className={styles["sidebar__toggle-button"]}
+        className={css["sidebar__toggle-button"]}
       >
         <span className="visibly-hidden">Menu</span>
         <FaPlus
           aria-hidden="true"
           className={`
-            ${styles.sidebar__icon}
-            ${styles[`sidebar__icon${isSideBarOpen ? "--open" : "--closed"}`]}`}
+            ${css.sidebar__icon}
+            ${css[`sidebar__icon${isSideBarOpen ? "--open" : "--closed"}`]}`}
           title={isSideBarOpen ? "close menu" : "open menu"}
         />
       </button>
 
-      <section className={styles.sidebar__section}>
-        <form className={styles.sidebar__form} onSubmit={handleSearchSubmit}>
+      <section className={css.sidebar__section}>
+        <form className={css.sidebar__form} onSubmit={handleSearchSubmit}>
           <TextBox
             field="title"
             onChange={handleSearchChange}
@@ -87,22 +87,20 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           />
           <button type="submit">
             <FaSearch />
-            <span className={styles["sidebar__search-submit-button"]}>
-              Search
-            </span>
+            <span className={css["sidebar__search-submit-button"]}>Search</span>
           </button>
         </form>
       </section>
-      <section className={styles.sidebar__section}>
-        <h3 className={styles.sidebar__heading}>City</h3>
-        <ul className={styles["sidebar__link-list"]}>
+      <section className={css.sidebar__section}>
+        <h3 className={css.sidebar__heading}>City</h3>
+        <ul className={css["sidebar__link-list"]}>
           {cities.map((city) => {
             const queryString = buildParamsString("query", { city });
             return (
               <li key={`${city}-city-filter-link`}>
                 <Link
                   className={
-                    styles[
+                    css[
                       `sidebar__link${
                         query && query.includes(`"city":"${city}"`)
                           ? "--active"
@@ -119,13 +117,13 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           })}
         </ul>
       </section>
-      <section className={styles.sidebar__section}>
-        <h3 className={styles.sidebar__heading}>Price</h3>
-        <ul className={styles["sidebar__link-list"]}>
+      <section className={css.sidebar__section}>
+        <h3 className={css.sidebar__heading}>Price</h3>
+        <ul className={css["sidebar__link-list"]}>
           <li>
             <Link
               className={
-                styles[
+                css[
                   `sidebar__link${
                     sort && sort.includes(`"price":1`) ? "--active" : ""
                   }`
@@ -139,7 +137,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           <li>
             <Link
               className={
-                styles[
+                css[
                   `sidebar__link${
                     sort && sort.includes(`"price":-1`) ? "--active" : ""
                   }`
@@ -153,7 +151,7 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
         </ul>
       </section>
       <button
-        className={styles["sidebar__reset-button"]}
+        className={css["sidebar__reset-button"]}
         type="button"
         onClick={handleReset}
       >

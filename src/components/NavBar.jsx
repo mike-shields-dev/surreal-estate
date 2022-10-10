@@ -1,21 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaFortAwesome } from "react-icons/fa";
-import styles from "../styles/NavBar.module.css";
+import css from "../styles/NavBar.module.css";
 
 const NavBar = () => {
   return (
     <nav>
-      <div className={styles.navbar__brand}>
+      <div className={css.navbar__brand}>
         <FaFortAwesome
-          className={styles["navbar__brand-logo"]}
+          className={css["navbar__brand-logo"]}
           title="brand logo"
         />
-        <h1 className={styles["navbar__brand-name"]} title="brand name">
+        <h1 className={css["navbar__brand-name"]} title="brand name">
           Surreal Estate
         </h1>
       </div>
-      <ul className={styles["navbar__links-list"]}>
+      <ul className={css["navbar__links-list"]}>
         <li>
           <NavLink to="/properties" draggable="false">
             View Properties

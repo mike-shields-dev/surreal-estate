@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
-import styles from "../styles/Properties.module.css";
+import css from "../styles/Properties.module.css";
 import useAPI from "../requests/useAPI";
 import cities from "../config/cities.json";
 
@@ -44,9 +44,9 @@ const Properties = () => {
   return (
     <>
       <SideBar {...{ cities, isSideBarOpen, setIsSideBarOpen }} />
-      <div className={styles.properties} title="properties">
+      <div className={css.properties} title="properties">
         <Alert {...alert} />
-        <div className={styles.properties__grid}>
+        <div className={css.properties__grid}>
           {properties.map((property) => (
             <PropertyCard key={property._id} {...property} />
           ))}

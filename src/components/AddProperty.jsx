@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/AddProperty.module.css";
+import css from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
 import TextBox from "./TextBox";
@@ -55,9 +55,9 @@ const AddProperty = () => {
   useEffect(() => () => controller && controller.abort(), []);
 
   return (
-    <div className={styles["add-property"]} title="add property">
+    <div className={css["add-property"]} title="add property">
       <form
-        className={styles["add-property__form"]}
+        className={css["add-property__form"]}
         name="add property"
         onSubmit={handleAddProperty}
       >

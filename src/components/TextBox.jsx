@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../styles/TextBox.module.css";
+import css from "../styles/TextBox.module.css";
 
 const TextBox = ({ field, maxLength, onChange, required, type, value }) => {
   return (
-    <div className={styles.textbox}>
-      <label htmlFor={field} className={styles.textbox__label}>
+    <div className={css.textbox}>
+      <label htmlFor={field} className={css.textbox__label}>
         {field}
       </label>
       <input
