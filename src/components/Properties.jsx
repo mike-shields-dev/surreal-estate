@@ -26,16 +26,14 @@ const Properties = () => {
   }, [search]);
 
   useEffect(() => {
-    console.log({ error, response });
     let { message, isSuccess } = initialState.alert;
 
-    if (error) {
-      message = error.message;
-    }
-    if (response && response.statusText.match(/ok/i)) {
-      isSuccess = true;
+    if (error) message = error.message;
+    if (response && response.status === 200) {
       setProperties(response.data);
+      isSuccess = true;
     }
+
     setAlert({ message, isSuccess });
   }, [response, error]);
 

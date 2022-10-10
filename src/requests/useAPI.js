@@ -22,7 +22,7 @@ const useAPI = () => {
           signal: controller.signal,
         })
         .then((res) => setResponse(res))
-        .catch((err) => setError(err.message))
+        .catch((err) => setError(err))
         .finally(() => setIsLoading(false));
     }
 

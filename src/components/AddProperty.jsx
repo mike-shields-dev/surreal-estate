@@ -42,13 +42,12 @@ const AddProperty = () => {
   useEffect(() => {
     let { message, isSuccess } = initialState.alert;
 
-    if (error) {
-      message = error.message;
-    }
+    if (error) message = error.message;
     if (response && response.status === 201) {
       message = response.statusText;
       isSuccess = true;
     }
+
     setAlert({ message, isSuccess });
   }, [response, error]);
 
