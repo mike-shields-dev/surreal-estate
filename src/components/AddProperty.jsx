@@ -75,6 +75,7 @@ const AddProperty = () => {
           type="text"
           value={fields.title}
           maxLength="48"
+          required
         />
         <ComboBox
           field="type"
@@ -88,6 +89,7 @@ const AddProperty = () => {
           onChange={handleFieldChange}
           step="1"
           value={fields.bedrooms}
+          required
         />
         <SpinButton
           field="bathrooms"
@@ -95,6 +97,7 @@ const AddProperty = () => {
           onChange={handleFieldChange}
           step="1"
           value={fields.bathrooms}
+          required
         />
         <SpinButton
           field="price"
@@ -103,6 +106,7 @@ const AddProperty = () => {
           step="1"
           units="£"
           value={fields.price}
+          required
         />
         <ComboBox
           field="city"
@@ -116,6 +120,7 @@ const AddProperty = () => {
           value={fields.email}
           type="email"
           maxLength="64"
+          required
         />
         <button type="submit">Add</button>
       </form>

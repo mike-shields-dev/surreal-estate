@@ -2,19 +2,22 @@
 
 exports[`TextBox matches snapshot 1`] = `
 <DocumentFragment>
-  <label
-    class="textbox__label"
-    for="title"
+  <div
+    class="textbox"
   >
-    title
+    <label
+      class="textbox__label"
+      for="title"
+    >
+      title
+    </label>
     <input
       id="title"
       maxlength="64"
       name="title"
-      required=""
       type="text"
       value=""
     />
-  </label>
+  </div>
 </DocumentFragment>
 `;

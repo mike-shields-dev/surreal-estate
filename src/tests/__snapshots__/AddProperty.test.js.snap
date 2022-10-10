@@ -10,11 +10,15 @@ exports[`AddProperty matches snapshot 1`] = `
       class="add-property__form"
       name="add property"
     >
-      <label
-        class="textbox__label"
-        for="title"
+      <div
+        class="textbox"
       >
-        title
+        <label
+          class="textbox__label"
+          for="title"
+        >
+          title
+        </label>
         <input
           id="title"
           maxlength="48"
@@ -23,7 +27,7 @@ exports[`AddProperty matches snapshot 1`] = `
           type="text"
           value=""
         />
-      </label>
+      </div>
       <label
         for="type"
       >
@@ -150,11 +154,15 @@ exports[`AddProperty matches snapshot 1`] = `
           </option>
         </select>
       </label>
-      <label
-        class="textbox__label"
-        for="email"
+      <div
+        class="textbox"
       >
-        email
+        <label
+          class="textbox__label"
+          for="email"
+        >
+          email
+        </label>
         <input
           id="email"
           maxlength="64"
@@ -163,7 +171,7 @@ exports[`AddProperty matches snapshot 1`] = `
           type="email"
           value=""
         />
-      </label>
+      </div>
       <button
         type="submit"
       >

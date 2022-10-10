@@ -10,7 +10,6 @@ exports[`SpinButton matches snapshot 1`] = `
       id="bedrooms"
       min="0"
       name="bedrooms"
-      required=""
       step="1"
       type="number"
       value="1"
