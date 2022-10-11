@@ -4,8 +4,8 @@ exports[`Alert has the correct class name when given success prop equal to false
 <DocumentFragment>
   <div
     class="
-      Alert 
-      error
+        Alert 
+        error
       "
     title="alert"
   >
@@ -18,8 +18,8 @@ exports[`Alert has the correct class name when given success prop equal to true 
 <DocumentFragment>
   <div
     class="
-      Alert 
-      success
+        Alert 
+        success
       "
     title="alert"
   >
@@ -34,8 +34,8 @@ exports[`Alert renders the provided message 1`] = `
 <DocumentFragment>
   <div
     class="
-      Alert 
-      success
+        Alert 
+        success
       "
     title="alert"
   >

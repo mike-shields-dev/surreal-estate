@@ -7,8 +7,8 @@ const Alert = ({ message, isSuccess }) => {
   return (
     <div
       className={`
-      ${css.Alert} 
-      ${css[`${isSuccess ? "success" : "error"}`]}
+        ${css.Alert} 
+        ${css[`${isSuccess ? "success" : "error"}`]}
       `}
       title="alert"
     >
