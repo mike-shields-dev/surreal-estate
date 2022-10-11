@@ -38,11 +38,15 @@ label {
 }
 
 input,
-select,
-textarea {
+select {
   border: 1px solid var(--bg-clr-mid);
   padding: 0.5em;
   background: var(--bg-clr-light);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--clr-brand);
 }
 
 button {
