@@ -33,7 +33,7 @@ SpinButton.propTypes = {
   required: PropTypes.bool,
   step: PropTypes.string,
   units: PropTypes.string,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 export default SpinButton;
