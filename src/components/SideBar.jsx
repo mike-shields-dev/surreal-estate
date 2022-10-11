@@ -14,7 +14,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
     ignoreQueryPrefix: true,
   });
   const { query, sort } = currentUrlParams;
-  console.log({ query, sort });
 
   const buildParamsString = (operation, valueObj) => {
     const newUrlParams = {
