@@ -69,6 +69,7 @@
 .sidebar__link--active {
   color: var(--font-clr-light);
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .sidebar__form {
