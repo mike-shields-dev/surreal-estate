@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaFortAwesome, FaBath, FaBed } from "react-icons/fa";
+import { UserProfileContext } from "../contexts/UserProfileContext";
 import css from "../styles/PropertyCard.module.css";
 
 const PropertyCard = ({
-  bathrooms,
-  bedrooms,
-  city,
-  email,
-  price,
-  title,
-  type,
+  property: { _id, bathrooms, bedrooms, city, email, price, title, type },
+  handleSaveProperty,
 }) => {
+  const { userProfile } = useContext(UserProfileContext);
   return (
     <div className={css["property-card"]}>
       <header className={css["property-card__header"]}>
@@ -34,6 +31,11 @@ const PropertyCard = ({
           <span className={css["property-card__currency"]}>£</span> {price}
         </p>
       </main>
+      {!!userProfile && (
+        <button type="button" onClick={() => handleSaveProperty(_id)}>
+          Save
+        </button>
+      )}
       <a
         className={css["property-card__mailto"]}
         href={`mailto:${email}`}
@@ -47,14 +49,23 @@ const PropertyCard = ({
   );
 };
 
+PropertyCard.defaultProps = {
+  userProfile: null,
+};
+
 PropertyCard.propTypes = {
-  bathrooms: PropTypes.string.isRequired,
-  bedrooms: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  handleSaveProperty: PropTypes.func.isRequired,
+  property: PropTypes.shape({
+    _id: PropTypes.string,
+    bathrooms: PropTypes.string,
+    bedrooms: PropTypes.string,
+    city: PropTypes.string,
+    email: PropTypes.string,
+    price: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.string,
+  }).isRequired,
+  userProfile: PropTypes.shape({}),
 };
 
 export default PropertyCard;

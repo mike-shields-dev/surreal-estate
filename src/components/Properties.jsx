@@ -20,6 +20,10 @@ const Properties = () => {
   const [properties, setProperties] = useState([]);
   const [alert, setAlert] = useState(initialState.alert);
 
+  const handleSaveProperty = (propertyId) => {
+    console.log({ propertyId });
+  };
+
   useEffect(() => {
     request({ method: "get", search });
   }, [search]);
@@ -45,7 +49,10 @@ const Properties = () => {
         <Alert {...alert} />
         <div className={css.properties__grid}>
           {properties.map((property) => (
-            <PropertyCard key={property._id} {...property} />
+            <PropertyCard
+              key={property._id}
+              {...{ handleSaveProperty, property }}
+            />
           ))}
         </div>
       </div>
