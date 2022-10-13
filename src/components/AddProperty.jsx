@@ -6,7 +6,7 @@ import TextBox from "./TextBox";
 import Alert from "./Alert";
 import cities from "../config/cities.json";
 import types from "../config/types.json";
-import useAPI from "../requests/useAPI";
+import useAPI from "../hooks/useAPI";
 
 const initialState = {
   alert: {

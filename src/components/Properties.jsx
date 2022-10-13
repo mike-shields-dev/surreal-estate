@@ -4,7 +4,7 @@ import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
 import SideBar from "./SideBar";
 import css from "../styles/Properties.module.css";
-import useAPI from "../requests/useAPI";
+import useAPI from "../hooks/useAPI";
 import cities from "../config/cities.json";
 
 const initialState = {
@@ -19,7 +19,6 @@ const Properties = () => {
   const { request, error, response, controller } = useAPI();
   const [properties, setProperties] = useState([]);
   const [alert, setAlert] = useState(initialState.alert);
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   useEffect(() => {
     request({ method: "get", search });
@@ -41,7 +40,7 @@ const Properties = () => {
 
   return (
     <>
-      <SideBar {...{ cities, isSideBarOpen, setIsSideBarOpen }} />
+      <SideBar {...{ cities }} />
       <div className={css.properties} title="properties">
         <Alert {...alert} />
         <div className={css.properties__grid}>
