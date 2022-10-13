@@ -5,82 +5,54 @@ import SideBar from "../components/SideBar";
 
 const cities = ["Leeds", "Liverpool", "Manchester", "Sheffield"];
 const props = {
-  isSideBarOpen: false,
-  setIsSideBarOpen: jest.fn(),
   cities,
 };
 
-const renderClosedSideBar = () =>
+const renderSideBar = () =>
   render(
     <BrowserRouter>
       <SideBar {...props} />
     </BrowserRouter>
   );
 
-const renderOpenSideBar = () => {
-  render(
-    <BrowserRouter>
-      <SideBar {...props} isSideBarOpen />
-    </BrowserRouter>
-  );
-};
-
 describe("SideBar", () => {
   it("matches snapshot", () => {
-    const { asFragment } = renderClosedSideBar();
+    const { asFragment } = renderSideBar();
 
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("has a 'closed' class if the given isSideBarOpen prop is false", () => {
-    renderClosedSideBar();
-
-    expect(
-      screen.getByRole("complementary").getAttribute("class").includes("closed")
-    ).toBeTruthy();
-  });
-
-  it("has an 'open' class if the given isSideBarOpen prop is true", () => {
-    renderOpenSideBar();
-
-    expect(
-      screen.getByRole("complementary").getAttribute("class").includes("open")
-    ).toBeTruthy();
-  });
-
   it("renders menu button", () => {
-    renderClosedSideBar();
+    renderSideBar();
     const menuButton = screen.getByRole("button", { name: /menu/i });
 
     expect(menuButton).toBeInTheDocument();
   });
 
-  it("menu button opens the sidebar if it is closed", () => {
-    renderClosedSideBar();
+  it("menu button opens and closes the sidebar", async () => {
+    renderSideBar();
+    const menuButtonEl = screen.getByRole("button", { name: /menu/i });
+    const sideBarEl = await screen.findByRole("complementary");
 
-    fireEvent.click(screen.getByRole("button", { name: /menu/i }));
+    expect(sideBarEl.getAttribute("class")).toMatch(/closed/i);
 
-    expect(props.setIsSideBarOpen).toHaveBeenCalledTimes(1);
-    expect(props.setIsSideBarOpen).toHaveBeenCalledWith(true);
-  });
+    fireEvent.click(menuButtonEl);
 
-  it("menu button closes the sidebar if it is open", () => {
-    renderOpenSideBar();
+    expect(sideBarEl.getAttribute("class")).toMatch(/open/i);
 
-    fireEvent.click(screen.getByRole("button", { name: /menu/i }));
+    fireEvent.click(menuButtonEl);
 
-    expect(props.setIsSideBarOpen).toHaveBeenCalledTimes(1);
-    expect(props.setIsSideBarOpen).toHaveBeenCalledWith(false);
+    expect(sideBarEl.getAttribute("class")).toMatch(/closed/i);
   });
 
   it("renders a heading of city for the city links", () => {
-    renderOpenSideBar();
+    renderSideBar();
 
-    expect(screen.getByRole("heading", { name: "City" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /city/i })).toBeInTheDocument();
   });
 
   it("renders a link for each of the given cities", () => {
-    renderOpenSideBar();
+    renderSideBar();
 
     const cityLinks = screen
       .getAllByRole("link")
@@ -95,8 +67,35 @@ describe("SideBar", () => {
     });
   });
 
+  it("applies active class ONLY to the city link that was clicked", () => {
+    renderSideBar();
+
+    const cityLinks = screen
+      .getAllByRole("link")
+      .filter((link) => link.href.match(/city/i));
+
+    cityLinks.forEach(async (cityLink) => {
+      fireEvent.click(cityLink);
+
+      expect(cityLink.getAttribute("class")).toMatch(/active/i);
+
+      const inactiveCityLinks = cityLinks.filter(
+        (link) => !link.className.match(/active/i)
+      );
+
+      expect(inactiveCityLinks).toHaveLength(cityLinks.length - 1);
+      expect(inactiveCityLinks.includes(cityLink)).toBeFalsy();
+    });
+  });
+
+  it("renders a heading of pric for the price sorting links", () => {
+    renderSideBar();
+
+    expect(screen.getByRole("heading", { name: /price/i })).toBeInTheDocument();
+  });
+
   it("renders links for sorting by price", () => {
-    renderOpenSideBar();
+    renderSideBar();
 
     expect(
       screen.getByRole("link", { name: /ascending/i })
@@ -104,5 +103,22 @@ describe("SideBar", () => {
     expect(
       screen.getByRole("link", { name: /descending/i })
     ).toBeInTheDocument();
+  });
+
+  it("applies active class ONLY to the city link that was clicked", async () => {
+    renderSideBar();
+
+    const sortPriceLinkAsc = screen.getByRole("link", { name: /ascending/i });
+    const sortPriceLinkDesc = screen.getByRole("link", { name: /descending/i });
+
+    fireEvent.click(sortPriceLinkAsc);
+
+    expect(sortPriceLinkAsc.getAttribute("class")).toMatch(/active/i);
+    expect(sortPriceLinkDesc.getAttribute("class")).not.toMatch(/active/i);
+
+    fireEvent.click(sortPriceLinkDesc);
+
+    expect(sortPriceLinkDesc.getAttribute("class")).toMatch(/active/i);
+    expect(sortPriceLinkAsc.getAttribute("class")).not.toMatch(/active/i);
   });
 });

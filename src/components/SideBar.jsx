@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaPlus, FaSearch } from "react-icons/fa";
 import css from "../styles/SideBar.module.css";
 import TextBox from "./TextBox";
+import useToggle from "../hooks/useToggle";
 
-const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
+const SideBar = ({ cities }) => {
+  const { status: isExpanded, toggleStatus: toggleExpanded } = useToggle(false);
   const navigate = useNavigate();
   const { search } = useLocation();
   const [titleSearch, setTitleSearch] = useState("");
@@ -48,8 +50,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
     navigate(newUrlParamsString);
   };
 
-  const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
-
   const handleReset = () => {
     navigate("");
     setTitleSearch("");
@@ -59,10 +59,10 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
     <aside
       className={`
         ${css.sidebar} 
-        ${css[`sidebar${isSideBarOpen ? "--open" : "--closed"}`]}`}
+        ${css[`sidebar${isExpanded ? "--open" : "--closed"}`]}`}
     >
       <button
-        onClick={toggleSideBar}
+        onClick={toggleExpanded}
         type="button"
         className={css["sidebar__toggle-button"]}
       >
@@ -71,8 +71,8 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
           aria-hidden="true"
           className={`
             ${css.sidebar__icon}
-            ${css[`sidebar__icon${isSideBarOpen ? "--open" : "--closed"}`]}`}
-          title={isSideBarOpen ? "close menu" : "open menu"}
+            ${css[`sidebar__icon${isExpanded ? "--open" : "--closed"}`]}`}
+          title={isExpanded ? "close menu" : "open menu"}
         />
       </button>
 
@@ -162,8 +162,6 @@ const SideBar = ({ cities, isSideBarOpen, setIsSideBarOpen }) => {
 
 SideBar.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isSideBarOpen: PropTypes.bool.isRequired,
-  setIsSideBarOpen: PropTypes.func.isRequired,
 };
 
 export default SideBar;
