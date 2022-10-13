@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { FaFortAwesome } from "react-icons/fa";
 import css from "../styles/NavBar.module.css";
 
-const NavBar = () => {
+const NavBar = ({ children }) => {
   return (
     <nav>
       <div className={css.navbar__brand}>
@@ -27,8 +28,21 @@ const NavBar = () => {
           </NavLink>
         </li>
       </ul>
+
+      {children}
     </nav>
   );
+};
+
+NavBar.defaultProps = {
+  children: null,
+};
+
+NavBar.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export default NavBar;
