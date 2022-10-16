@@ -1,0 +1,11 @@
+.SavePropertyButton {
+    --color: var(--clr-brand);
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--color);
+    background: none;
+    width: 100%;
+    padding: 1em;
+    color: var(--color);
+    gap: 0.2em;
+  }

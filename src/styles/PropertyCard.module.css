@@ -50,10 +50,8 @@
 
 .property-card__mailto {
   align-self: flex-end;
-  height: min-height;
-  align-items: center;
   background-color: rgb(118, 72, 123);
-  color: #fff;
+  color: var(--font-clr-light);
   display: flex;
   gap: 0.2em;
   justify-content: center;

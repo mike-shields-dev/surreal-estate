@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import PropertyCard from "./PropertyCard";
 import Alert from "./Alert";
@@ -14,33 +15,80 @@ const initialState = {
   },
 };
 
-const Properties = () => {
+const Properties = ({ userId }) => {
   const { search } = useLocation();
-  const { request, error, response, controller } = useAPI();
   const [properties, setProperties] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [alert, setAlert] = useState(initialState.alert);
+  const {
+    request: favouriteRequest,
+    error: favouriteError,
+    response: favouriteResponse,
+    controller: favouriteController,
+  } = useAPI();
+  const {
+    request: propertiesRequest,
+    error: propertiesError,
+    response: propertiesResponse,
+    controller: propertiesController,
+  } = useAPI();
 
-  const handleSaveProperty = (propertyId) => {
-    console.log({ propertyId });
+  console.log({ favourites });
+
+  const requestFavourites = () => {
+    favouriteRequest({
+      method: "get",
+      endpoint: "/Favourite",
+      query: `?query={"fbUserId":"${userId}"}`,
+    });
   };
 
-  useEffect(() => {
-    request({ method: "get", search });
-  }, [search]);
+  const requestProperties = () => {
+    propertiesRequest({
+      method: "get",
+      query: search,
+      endpoint: "/PropertyListing",
+    });
+  };
+
+  useEffect(() => requestProperties(), [search]);
+  useEffect(() => requestFavourites(), [userId]);
 
   useEffect(() => {
     let { message, isSuccess } = initialState.alert;
 
-    if (error) message = error.message;
-    if (response && response.status === 200) {
-      setProperties(response.data);
+    if (propertiesError) message = propertiesError.message;
+    if (propertiesResponse?.status === 200) {
+      setProperties(propertiesResponse.data);
       isSuccess = true;
     }
-
     setAlert({ message, isSuccess });
-  }, [response, error]);
+  }, [propertiesResponse, propertiesError]);
 
-  useEffect(() => controller && controller.abort(), []);
+  useEffect(() => {
+    let { message, isSuccess } = initialState.alert;
+
+    if (favouriteError) message = favouriteError.message;
+    if (favouriteResponse?.status === 200) {
+      const uniqueFavourites = favouriteResponse.data.reduce((array, cur) => {
+        if (!array.some((el) => el.propertyListing === cur.propertyListing)) {
+          return [...array, cur];
+        }
+        return array;
+      }, []);
+      setFavourites(uniqueFavourites);
+      isSuccess = true;
+    }
+    setAlert({ message, isSuccess });
+  }, [favouriteResponse, favouriteError]);
+
+  useEffect(
+    () => () => {
+      favouriteController?.abort();
+      propertiesController?.abort();
+    },
+    []
+  );
 
   return (
     <>
@@ -50,14 +98,21 @@ const Properties = () => {
         <div className={css.properties__grid}>
           {properties.map((property) => (
             <PropertyCard
+              favourites={favourites}
               key={property._id}
-              {...{ handleSaveProperty, property }}
+              property={property}
+              requestFavourites={requestFavourites}
+              userId={userId}
             />
           ))}
         </div>
       </div>
     </>
   );
+};
+
+Properties.propTypes = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default Properties;

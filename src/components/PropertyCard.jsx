@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaFortAwesome, FaBath, FaBed } from "react-icons/fa";
-import { UserProfileContext } from "../contexts/UserProfileContext";
 import css from "../styles/PropertyCard.module.css";
+import SavePropertyButton from "./SavePropertyButton";
 
 const PropertyCard = ({
   property: { _id, bathrooms, bedrooms, city, email, price, title, type },
-  handleSaveProperty,
+  favourites,
+  userId,
+  requestFavourites,
 }) => {
-  const { userProfile } = useContext(UserProfileContext);
   return (
     <div className={css["property-card"]}>
       <header className={css["property-card__header"]}>
@@ -31,11 +32,6 @@ const PropertyCard = ({
           <span className={css["property-card__currency"]}>£</span> {price}
         </p>
       </main>
-      {!!userProfile && (
-        <button type="button" onClick={() => handleSaveProperty(_id)}>
-          Save
-        </button>
-      )}
       <a
         className={css["property-card__mailto"]}
         href={`mailto:${email}`}
@@ -45,16 +41,24 @@ const PropertyCard = ({
         <HiOutlineMail className={css["property-card__mail-icon"]} />
         <span>email</span>
       </a>
+      {userId && (
+        <SavePropertyButton
+          {...{ _id, userId, favourites, requestFavourites }}
+        />
+      )}
     </div>
   );
 };
 
-PropertyCard.defaultProps = {
-  userProfile: null,
-};
-
 PropertyCard.propTypes = {
-  handleSaveProperty: PropTypes.func.isRequired,
+  favourites: PropTypes.arrayOf(
+    PropTypes.shape({
+      fbUserId: PropTypes.string,
+      propertyListing: PropTypes.string,
+      __v: PropTypes.number,
+      _id: PropTypes.string,
+    })
+  ).isRequired,
   property: PropTypes.shape({
     _id: PropTypes.string,
     bathrooms: PropTypes.string,
@@ -65,7 +69,8 @@ PropertyCard.propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  userProfile: PropTypes.shape({}),
+  requestFavourites: PropTypes.func.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 export default PropertyCard;

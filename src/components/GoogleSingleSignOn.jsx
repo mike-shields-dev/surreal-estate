@@ -1,18 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { gapi } from "gapi-script";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
-import { UserProfileContext } from "../contexts/UserProfileContext";
 import css from "../styles/GoogleSingleSignOn.module.css";
 import credentials from "../config/googleCredentials.json";
 
 const { clientId } = credentials;
 
-const GoogleSingleSignOn = () => {
-  const { userProfile, setUserProfile } = useContext(UserProfileContext);
-  const username = userProfile?.givenName;
-
+const GoogleSingleSignOn = ({ username, setUserProfile }) => {
   const onLoginSuccess = (res) => {
-    setUserProfile(res.profileObj);
+    setUserProfile(res);
   };
 
   const onLogoutSuccess = () => {
@@ -54,6 +51,11 @@ const GoogleSingleSignOn = () => {
       )}
     </div>
   );
+};
+
+GoogleSingleSignOn.propTypes = {
+  username: PropTypes.string.isRequired,
+  setUserProfile: PropTypes.func.isRequired,
 };
 
 export default GoogleSingleSignOn;

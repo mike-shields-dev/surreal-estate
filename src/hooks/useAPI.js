@@ -10,30 +10,58 @@ const useAPI = () => {
   const [error, setError] = useState(null);
   let controller;
 
-  const request = ({ method, payload, search }) => {
+  const request = ({ method, data, endpoint, query }) => {
     controller = new AbortController();
-    setIsLoading(true);
     setResponse(null);
     setError(null);
+    setIsLoading(true);
 
-    if (method.match(/get/i)) {
-      axios
-        .get(`/PropertyListing${search}`, {
-          signal: controller.signal,
-        })
-        .then((res) => setResponse(res))
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+    if (endpoint.match(/propertylisting/i)) {
+      if (method.match(/get/i)) {
+        axios
+          .get(`/PropertyListing${query}`, {
+            signal: controller.signal,
+          })
+          .then((res) => setResponse(res))
+          .catch((err) => setError(err))
+          .finally(() => setIsLoading(false));
+
+        return;
+      }
+
+      if (method.match(/post/i)) {
+        axios
+          .post("/PropertyListing", data, {
+            signal: controller.signal,
+          })
+          .then((res) => setResponse(res))
+          .catch((err) => setError(err))
+          .finally(() => setIsLoading(false));
+
+        return;
+      }
     }
 
-    if (method.match(/post/i)) {
-      axios
-        .post("/PropertyListing", payload, {
-          signal: controller.signal,
-        })
-        .then((res) => setResponse(res))
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+    if (endpoint.match(/favourite/i)) {
+      if (method.match(/get/i)) {
+        axios
+          .get(`/Favourite`)
+          .then((res) => setResponse(res))
+          .catch((err) => setError(err))
+          .finally(() => setIsLoading(false));
+
+        return;
+      }
+
+      if (method.match(/post/i)) {
+        axios
+          .post(`/Favourite${query}`, data, {
+            signal: controller.signal,
+          })
+          .then((res) => setResponse(res))
+          .catch((err) => setError(err))
+          .finally(() => setIsLoading(false));
+      }
     }
   };
 

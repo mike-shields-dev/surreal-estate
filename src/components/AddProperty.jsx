@@ -31,7 +31,11 @@ const AddProperty = () => {
 
   const handleAddProperty = async (event) => {
     event.preventDefault();
-    request({ method: "post", payload: fields });
+    request({
+      method: "post",
+      endpoint: "PropertyListing",
+      data: fields,
+    });
   };
 
   const handleFieldChange = (event) => {
@@ -51,7 +55,7 @@ const AddProperty = () => {
     setAlert({ message, isSuccess });
   }, [response, error]);
 
-  useEffect(() => () => controller && controller.abort(), []);
+  useEffect(() => () => controller?.abort(), []);
 
   return (
     <div className={css["add-property"]} title="add property">
