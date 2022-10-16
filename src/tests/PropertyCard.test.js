@@ -3,13 +3,19 @@ import { render, screen } from "@testing-library/react";
 import PropertyCard from "../components/PropertyCard";
 
 const props = {
-  title: "2 bedroom period property",
-  type: "Flat",
-  bedrooms: "2",
-  bathrooms: "3",
-  price: "1000",
-  city: "Liverpool",
-  email: "example@example.com",
+  property: {
+    _id: "12345",
+    title: "2 bedroom period property",
+    type: "Flat",
+    bedrooms: "2",
+    bathrooms: "3",
+    price: "1000",
+    city: "Liverpool",
+    email: "example@example.com",
+  },
+  favourites: [],
+  requestFavourites: jest.fn(),
+  userId: "23ibdoj5otij24",
 };
 
 const renderPropertyCard = () => render(<PropertyCard {...props} />);
@@ -30,25 +36,25 @@ describe("PropertyCard", () => {
   it("renders the title prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText([props.title])).toBeInTheDocument();
+    expect(screen.getByText([props.property.title])).toBeInTheDocument();
   });
 
   it("renders the type prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText(props.type)).toBeInTheDocument();
+    expect(screen.getByText(props.property.type)).toBeInTheDocument();
   });
 
   it("renders the city prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText(props.city)).toBeInTheDocument();
+    expect(screen.getByText(props.property.city)).toBeInTheDocument();
   });
 
   it("renders the bathrooms prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText(props.bathrooms)).toBeInTheDocument();
+    expect(screen.getByText(props.property.bathrooms)).toBeInTheDocument();
   });
 
   it("renders a bath icon", () => {
@@ -60,7 +66,7 @@ describe("PropertyCard", () => {
   it("renders the bedrooms prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText(props.bedrooms)).toBeInTheDocument();
+    expect(screen.getByText(props.property.bedrooms)).toBeInTheDocument();
   });
 
   it("renders a bed icon", () => {
@@ -72,7 +78,7 @@ describe("PropertyCard", () => {
   it("renders price prop", () => {
     renderPropertyCard();
 
-    expect(screen.getByText(props.bedrooms)).toBeInTheDocument();
+    expect(screen.getByText(props.property.bedrooms)).toBeInTheDocument();
   });
 
   it(`renders a 'mailto' link: 
@@ -84,7 +90,7 @@ describe("PropertyCard", () => {
 
     expect(mailtoLink.closest("a")).toHaveAttribute(
       "href",
-      `mailto:${props.email}`
+      `mailto:${props.property.email}`
     );
     expect(mailtoLink.closest("a")).toHaveAttribute("target", "_blank");
     expect(mailtoLink.closest("a")).toHaveAttribute("rel", "noreferrer");
