@@ -51,6 +51,15 @@ exports[`Navbar matches snapshot 1`] = `
           Add Property
         </a>
       </li>
+      <li>
+        <a
+          class=""
+          draggable="false"
+          href="/saved-properties"
+        >
+          Saved Properties
+        </a>
+      </li>
     </ul>
   </nav>
 </DocumentFragment>

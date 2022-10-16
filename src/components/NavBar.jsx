@@ -27,6 +27,11 @@ const NavBar = ({ children }) => {
             Add Property
           </NavLink>
         </li>
+        <li>
+          <NavLink to="saved-properties" draggable="false">
+            Saved Properties
+          </NavLink>
+        </li>
       </ul>
 
       {children}

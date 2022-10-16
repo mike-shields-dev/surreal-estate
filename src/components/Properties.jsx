@@ -33,20 +33,18 @@ const Properties = ({ userId }) => {
     controller: propertiesController,
   } = useAPI();
 
-  console.log({ favourites });
-
   const requestFavourites = () => {
     favouriteRequest({
       method: "get",
       endpoint: "/Favourite",
-      query: `?query={"fbUserId":"${userId}"}`,
+      params: `?query={"fbUserId":"${userId}"}`,
     });
   };
 
   const requestProperties = () => {
     propertiesRequest({
       method: "get",
-      query: search,
+      params: search,
       endpoint: "/PropertyListing",
     });
   };

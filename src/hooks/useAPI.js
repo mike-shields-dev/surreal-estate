@@ -10,7 +10,7 @@ const useAPI = () => {
   const [error, setError] = useState(null);
   let controller;
 
-  const request = ({ method, data, endpoint, query }) => {
+  const request = ({ method, data, endpoint, params }) => {
     controller = new AbortController();
     setResponse(null);
     setError(null);
@@ -19,7 +19,7 @@ const useAPI = () => {
     if (endpoint.match(/propertylisting/i)) {
       if (method.match(/get/i)) {
         axios
-          .get(`/PropertyListing${query}`, {
+          .get(`/PropertyListing${params}`, {
             signal: controller.signal,
           })
           .then((res) => setResponse(res))
@@ -55,7 +55,7 @@ const useAPI = () => {
 
       if (method.match(/post/i)) {
         axios
-          .post(`/Favourite${query}`, data, {
+          .post(`/Favourite${params}`, data, {
             signal: controller.signal,
           })
           .then((res) => setResponse(res))
