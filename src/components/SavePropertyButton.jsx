@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import useAPI from "../hooks/useAPI";
 import css from "../styles/SavePropertyButton.module.css";
 
@@ -29,22 +29,16 @@ const SavePropertyButton = ({ _id, userId, favourites, requestFavourites }) => {
 
   return (
     <button
-      className={css.SavePropertyButton}
+      className={`
+        ${css.SavePropertyButton}
+        ${css[`${isSaved ? "disabled" : "enabled"}`]}
+      `}
       type="button"
       onClick={saveProperty}
       disabled={isSaved}
     >
-      {isSaved ? (
-        <>
-          <FaStar />
-          Saved
-        </>
-      ) : (
-        <>
-          <FaRegStar />
-          Save
-        </>
-      )}
+      <FaStar />
+      {isSaved ? "Saved" : "Save"}
     </button>
   );
 };
