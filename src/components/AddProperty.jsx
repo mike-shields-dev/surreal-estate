@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import css from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
@@ -24,7 +26,10 @@ const initialState = {
   },
 };
 
-const AddProperty = () => {
+const AddProperty = ({ userId }) => {
+  if (!userId) {
+    return <Navigate to="/properties" replace />;
+  }
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
 
@@ -126,6 +131,10 @@ const AddProperty = () => {
       </form>
     </div>
   );
+};
+
+AddProperty.propTypes = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default AddProperty;

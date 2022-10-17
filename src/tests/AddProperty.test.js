@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import AddProperty from "../components/AddProperty";
 
-const renderAddProperty = () => render(<AddProperty />);
+const renderAddProperty = () => render(<AddProperty userId="1234567890" />);
 
 describe("AddProperty", () => {
   it("matches snapshot", () => {
