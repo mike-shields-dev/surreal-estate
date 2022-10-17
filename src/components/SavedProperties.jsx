@@ -1,46 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import useAPI from "../hooks/useAPI";
 import SavedProperty from "./SavedProperty";
+import { getFavourites } from "../requests/API";
 
-const Favourites = ({ userId }) => {
+const SavedProperties = ({ userId }) => {
   const [favourites, setFavourites] = useState([]);
-  const { request, response, controller } = useAPI();
-
-  const requestFavourites = () =>
-    request({
-      method: "get",
-      endpoint: "/Favourite",
-      params: `?params={"fbUserId":"${userId}"}`,
-    });
+  
 
   useEffect(() => {
-    if (userId) requestFavourites();
+    (async () => {
+      setFavourites(await getFavourites(userId));
+    })();
   }, [userId]);
 
-  useEffect(() => {
-    if (!response) return;
-    setFavourites(
-      response?.data.reduce(
-        (array, current) =>
-          array.some((el) => el.propertyListing === current.propertyListing)
-            ? array
-            : [...array, current],
-        []
-      )
-    );
-  }, [response]);
-
-  useEffect(() => () => controller?.abort(), []);
-
   return (
-    <div className="favourites">
-      {favourites.map((favourite) => {
-        const { propertyListing } = favourite;
+    <div className={css.SavedProperties}>
+      {favourites.map(({ _id, propertyListing }) => {
         return (
           <SavedProperty
-            key={propertyListing}
-            propertyListingId={propertyListing}
+            key={_id}
+            {...{ userId, _id, propertyListing, setFavourites }}
           />
         );
       })}
@@ -48,8 +27,8 @@ const Favourites = ({ userId }) => {
   );
 };
 
-Favourites.propTypes = {
+SavedProperties.propTypes = {
   userId: PropTypes.string.isRequired,
 };
 
-export default Favourites;
+export default SavedProperties;
