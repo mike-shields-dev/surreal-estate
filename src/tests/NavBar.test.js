@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 const renderNavBar = () =>
   render(
     <BrowserRouter>
-      <NavBar />
+      <NavBar userId="1234567" />
     </BrowserRouter>
   );
 

@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <NavBar>
+      <NavBar userId={userId}>
         <GoogleSingleSignOn
           username={username}
           setUserProfile={setUserProfile}
@@ -26,7 +26,10 @@ const App = () => {
             path="/saved-properties"
             element={<SavedProperties userId={userId} />}
           />
-          <Route path="/add-property" element={<AddProperty />} />
+          <Route
+            path="/add-property"
+            element={<AddProperty userId={userId} />}
+          />
           <Route path="*" element={<Navigate to="/properties" />} />
         </Routes>
       </main>
