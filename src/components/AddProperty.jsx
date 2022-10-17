@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import css from "../styles/AddProperty.module.css";
 import ComboBox from "./ComboBox";
 import SpinButton from "./SpinButton";
@@ -6,7 +6,7 @@ import TextBox from "./TextBox";
 import Alert from "./Alert";
 import cities from "../config/cities.json";
 import types from "../config/types.json";
-import useAPI from "../hooks/useAPI";
+import { postProperty } from "../requests/API";
 
 const initialState = {
   alert: {
@@ -27,35 +27,39 @@ const initialState = {
 const AddProperty = () => {
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);
-  const { request, error, response, controller } = useAPI();
 
   const handleAddProperty = async (event) => {
     event.preventDefault();
-    request({
-      method: "post",
-      endpoint: "PropertyListing",
-      data: fields,
-    });
+    setAlert(initialState.alert);
+
+    postProperty(fields)
+      .then(() => {
+        setAlert({
+          message: "Property added, thank you",
+          isSuccess: true,
+        });
+        setFields(initialState.fields);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response) {
+          setAlert({
+            message: "Server error, please try again",
+            isSuccess: false,
+          });
+        } else if (err.request) {
+          setAlert({
+            message: "Network error, please try again",
+            isSuccess: false,
+          });
+        }
+      });
   };
 
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
     setFields({ ...fields, [name]: value });
   };
-
-  useEffect(() => {
-    let { message, isSuccess } = initialState.alert;
-
-    if (error) message = error.message;
-    if (response && response.status === 201) {
-      message = response.statusText;
-      isSuccess = true;
-    }
-
-    setAlert({ message, isSuccess });
-  }, [response, error]);
-
-  useEffect(() => () => controller?.abort(), []);
 
   return (
     <div className={css["add-property"]} title="add property">
