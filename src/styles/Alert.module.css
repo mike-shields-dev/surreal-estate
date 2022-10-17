@@ -3,8 +3,12 @@
   position: relative;
 }
 
-.success { color: var(--clr-success) }
-.error { color: var(--clr-danger) }
+.success {
+  color: var(--clr-success);
+}
+.error {
+  color: var(--clr-danger);
+}
 
 .Alert::before {
   background: currentColor;

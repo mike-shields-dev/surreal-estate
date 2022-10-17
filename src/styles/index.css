@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: 0;
   user-select: none;
-  -webkit-user-drag: false; 
+  -webkit-user-drag: false;
   letter-spacing: 0.05em;
 }
 
@@ -71,13 +71,12 @@ a.active {
   font-weight: bold;
 }
 
-
 .visibly-hidden {
-  clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
-  white-space: nowrap; 
+  white-space: nowrap;
   width: 1px;
 }
