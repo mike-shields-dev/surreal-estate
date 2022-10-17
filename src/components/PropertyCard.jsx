@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaFortAwesome, FaBath, FaBed } from "react-icons/fa";
 import css from "../styles/PropertyCard.module.css";
-import SavePropertyButton from "./SavePropertyButton";
+import PropertyCardSaveButton from "./PropertyCardSaveButton";
 
 const PropertyCard = ({
   property: { _id, bathrooms, bedrooms, city, email, price, title, type },
   favourites,
   userId,
-  requestFavourites,
+  setFavourites,
 }) => {
   return (
     <div className={css["property-card"]}>
@@ -42,8 +42,8 @@ const PropertyCard = ({
         <span>email</span>
       </a>
       {userId && (
-        <SavePropertyButton
-          {...{ _id, userId, favourites, requestFavourites }}
+        <PropertyCardSaveButton
+          {...{ _id, userId, favourites, setFavourites }}
         />
       )}
     </div>
@@ -69,7 +69,7 @@ PropertyCard.propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  requestFavourites: PropTypes.func.isRequired,
+  setFavourites: PropTypes.func.isRequired,
   userId: PropTypes.string.isRequired,
 };
 
