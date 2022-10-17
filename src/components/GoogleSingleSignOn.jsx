@@ -34,7 +34,7 @@ const GoogleSingleSignOn = ({ username, setUserProfile }) => {
 
   return (
     <div className={css.GoogleSingleSignOn}>
-      {username && <p>Welcome, {username}</p>}
+      {username && <p>Hello {username}</p>}
       {username ? (
         <GoogleLogout
           clientId={clientId}
