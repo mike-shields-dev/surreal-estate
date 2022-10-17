@@ -1,0 +1,16 @@
+.SavedProperty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: var(--bg-clr-light);
+}
+
+.SavedProperty span {
+    padding-left: 1rem;
+}
+
+.SavedProperty button {
+  background: var(--clr-danger);
+  padding: 0.75rem;
+}

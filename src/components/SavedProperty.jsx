@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import useAPI from "../hooks/useAPI";
+import css from "../styles/SavedProperty.module.css";
+import { getProperty, getFavourites, deleteFavourite } from "../requests/API";
 
-const SavedProperty = ({ propertyListingId }) => {
-  const { request, response, controller } = useAPI();
+const SavedProperty = ({ userId, _id, propertyListing, setFavourites }) => {
   const [property, setProperty] = useState({});
 
-  const requestProperty = () => {
-    if (!propertyListingId) return;
-    request({
-      method: "get",
-      endpoint: "/PropertyListing",
-      params: `/${propertyListingId}`,
-    });
-  };
-
   useEffect(() => {
-    requestProperty();
+    (async () => {
+      setProperty(await getProperty(propertyListing));
+    })();
   }, []);
 
-  useEffect(() => {
-    if (!response) return;
-    setProperty(response.data);
-  }, [response]);
+  const removeFavourite = async () => {
+    await deleteFavourite(_id);
+    setFavourites(await getFavourites(userId));
+  };
 
-  useEffect(() => () => controller?.abort());
-
-  return <div>{property.title}</div>;
+  return (
+    <div className={css.SavedProperty}>
+      <p>{property?.title}</p>
+      <button type="button" onClick={removeFavourite}>
+        Remove
+      </button>
+    </div>
+  );
 };
 
 SavedProperty.propTypes = {
-  propertyListingId: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+  propertyListing: PropTypes.string.isRequired,
+  setFavourites: PropTypes.func.isRequired,
 };
 
 export default SavedProperty;
