@@ -25,7 +25,7 @@ describe("App", () => {
       expect(screen.queryByTitle("add property")).not.toBeInTheDocument();
     });
 
-    it("selecting each hyperlink, renders the correct routed component", () => {
+    xit("selecting each hyperlink, renders the correct routed component", () => {
       renderApp();
 
       const addPropertyLink = screen.getByRole("link", {
