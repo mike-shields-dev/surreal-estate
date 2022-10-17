@@ -14,8 +14,8 @@ const props = {
     email: "example@example.com",
   },
   favourites: [],
-  requestFavourites: jest.fn(),
-  userId: "23ibdoj5otij24",
+  setFavourites: jest.fn(),
+  userId: "user id",
 };
 
 const renderPropertyCard = () => render(<PropertyCard {...props} />);
