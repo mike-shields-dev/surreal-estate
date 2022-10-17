@@ -1,19 +1,19 @@
 .SavePropertyButton {
-    display: flex;
-    justify-content: center;
-    background: none;
-    width: 100%;
-    padding: 1em;
-    gap: 0.2em;
-  }
-  
-  .enabled {
-    color: var(--font-clr-light);
-    background: var(--clr-brand);
-    border: none;
-  }
+  display: flex;
+  justify-content: center;
+  background: none;
+  width: 100%;
+  padding: 1em;
+  gap: 0.2em;
+}
 
-  .disabled {
-    color: var(--clr-brand);
-    border: 1px solid var(--clr-brand);
-  }
+.enabled {
+  color: var(--font-clr-light);
+  background: var(--clr-brand);
+  border: 1px solid var(--clr-brand);
+}
+
+.disabled {
+  color: var(--clr-brand);
+  border: 1px solid var(--clr-brand);
+}
