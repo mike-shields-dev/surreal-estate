@@ -5,6 +5,7 @@ import Properties from "./Properties";
 import SavedProperties from "./SavedProperties";
 import AddProperty from "./AddProperty";
 import GoogleSingleSignOn from "./GoogleSingleSignOn";
+import LoginCTA from "./LoginCTA";
 
 const App = () => {
   const [userProfile, setUserProfile] = useState({});
@@ -21,15 +22,16 @@ const App = () => {
       </NavBar>
       <main>
         <Routes>
-          <Route path="/properties" element={<Properties userId={userId} />} />
+          <Route path="properties" element={<Properties userId={userId} />} />
           <Route
-            path="/saved-properties"
+            path="saved-properties"
             element={<SavedProperties userId={userId} />}
           />
           <Route
-            path="/add-property"
+            path="add-property"
             element={<AddProperty userId={userId} />}
           />
+          <Route path="login-cta" element={<LoginCTA userId={userId} />} />
           <Route path="*" element={<Navigate to="/properties" />} />
         </Routes>
       </main>

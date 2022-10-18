@@ -1,0 +1,12 @@
+.LoginCTA {
+  padding: 2rem;
+}
+
+.LoginCTA__panel {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-clr-light);
+  padding: 1rem;
+}

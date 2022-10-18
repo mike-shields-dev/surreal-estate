@@ -7,7 +7,7 @@ import { getFavourites } from "../requests/API";
 
 const SavedProperties = ({ userId }) => {
   if (!userId) {
-    return <Navigate to="/properties" replace />;
+    return <Navigate to="/login-cta" replace />;
   }
 
   const [favourites, setFavourites] = useState([]);

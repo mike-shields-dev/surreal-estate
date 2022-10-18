@@ -28,7 +28,7 @@ const initialState = {
 
 const AddProperty = ({ userId }) => {
   if (!userId) {
-    return <Navigate to="/properties" replace />;
+    return <Navigate to="/login-cta" replace />;
   }
   const [fields, setFields] = useState(initialState.fields);
   const [alert, setAlert] = useState(initialState.alert);

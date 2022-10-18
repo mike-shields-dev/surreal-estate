@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { FaFortAwesome } from "react-icons/fa";
 import css from "../styles/NavBar.module.css";
 
-const NavBar = ({ userId, children }) => {
+const NavBar = ({ children }) => {
   return (
     <nav>
       <div className={css.navbar__brand}>
@@ -20,20 +20,12 @@ const NavBar = ({ userId, children }) => {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className={userId ? "" : css.disabled}
-            to="add-property"
-            draggable="false"
-          >
+          <NavLink to="add-property" draggable="false">
             Add Property
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className={userId ? "" : css.disabled}
-            to="saved-properties"
-            draggable="false"
-          >
+          <NavLink to="saved-properties" draggable="false">
             Saved Properties
           </NavLink>
         </li>
@@ -48,7 +40,6 @@ NavBar.defaultProps = {
 };
 
 NavBar.propTypes = {
-  userId: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
