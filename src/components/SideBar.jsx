@@ -104,7 +104,7 @@ const SideBar = ({ cities }) => {
               <li key={`${city}-city-filter-link`}>
                 <Link
                   className={
-                    query && query.includes(`"city":"${city}"`)
+                    query?.includes(`"city":"${city}"`)
                       ? css["SideBar__link--active"]
                       : ""
                   }
@@ -123,9 +123,7 @@ const SideBar = ({ cities }) => {
           <li>
             <Link
               className={
-                sort && sort.includes(`"price":1`)
-                  ? css["SideBar__link--active"]
-                  : ""
+                sort?.includes(`"price":1`) ? css["SideBar__link--active"] : ""
               }
               to={buildParamsString("sort", { price: 1 })}
             >
@@ -135,9 +133,7 @@ const SideBar = ({ cities }) => {
           <li>
             <Link
               className={
-                sort && sort.includes(`"price":-1`)
-                  ? css["SideBar__link--active"]
-                  : ""
+                sort?.includes(`"price":-1`) ? css["SideBar__link--active"] : ""
               }
               to={buildParamsString("sort", { price: -1 })}
             >
