@@ -9,4 +9,10 @@
   justify-content: center;
   background-color: var(--bg-clr-light);
   padding: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.LoginCTA__button {
+  padding: 1rem;
 }

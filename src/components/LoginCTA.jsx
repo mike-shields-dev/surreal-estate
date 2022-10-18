@@ -14,7 +14,11 @@ const LoginCTA = ({ userId }) => {
     <div className={css.LoginCTA}>
       <div className={css.LoginCTA__panel}>
         <p>Please login for full access</p>
-        <button type="button" onClick={() => navigate("/properties")}>
+        <button
+          className={css.LoginCTA__button}
+          type="button"
+          onClick={() => navigate("/properties")}
+        >
           OK
         </button>
       </div>
