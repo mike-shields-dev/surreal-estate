@@ -32,19 +32,21 @@ const PropertyCard = ({
           <span className={css.PropertyCard__currency}>£</span> {price}
         </p>
       </main>
-      <a
-        className={css["property-card__mailto"]}
-        href={`mailto:${email}`}
-        rel="noreferrer"
-        target="_blank"
-      >
-        <HiOutlineMail className={css["property-card__mail-icon"]} />
-        <span>email</span>
-      </a>
       {userId && (
-        <PropertyCardSaveButton
-          {...{ _id, userId, favourites, setFavourites }}
-        />
+        <>
+          <a
+            className={css.PropertyCard__mailto}
+            href={`mailto:${email}`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <HiOutlineMail className={css.PropertyCard__mailtoIcon} />
+            <span>email</span>
+          </a>
+          <PropertyCardSaveButton
+            {...{ _id, userId, favourites, setFavourites }}
+          />
+        </>
       )}
     </div>
   );
