@@ -58,54 +58,55 @@ const SideBar = ({ cities }) => {
   return (
     <aside
       className={`
-        ${css.sidebar} 
-        ${css[`sidebar${isExpanded ? "--open" : "--closed"}`]}`}
+        ${css.SideBar}
+        ${isExpanded ? css["SideBar--open"] : css["SideBar--closed"]} 
+      `}
     >
       <button
         onClick={toggleExpanded}
         type="button"
-        className={css["sidebar__toggle-button"]}
+        className={css.SideBar__toggleButton}
       >
         <span className="visibly-hidden">Menu</span>
         <FaPlus
           aria-hidden="true"
           className={`
-            ${css.sidebar__icon}
-            ${css[`sidebar__icon${isExpanded ? "--open" : "--closed"}`]}`}
+            ${css.SideBar__toggleIcon}
+            ${
+              isExpanded
+                ? css["SideBar__toggleIcon--open"]
+                : css["SideBar__toggleIcon--closed"]
+            }`}
           title={isExpanded ? "close menu" : "open menu"}
         />
       </button>
 
-      <section className={css.sidebar__section}>
-        <form className={css.sidebar__form} onSubmit={handleSearchSubmit}>
+      <section className={css.SideBar__section}>
+        <form className={css.SideBar__search} onSubmit={handleSearchSubmit}>
           <TextBox
             field="title"
             onChange={handleSearchChange}
             value={titleSearch}
             type="search"
           />
-          <button type="submit">
+          <button className={css.SideBar__searchButton} type="submit">
             <FaSearch />
-            <span className={css["sidebar__search-submit-button"]}>Search</span>
+            <span className="visibly-hidden">Search</span>
           </button>
         </form>
       </section>
-      <section className={css.sidebar__section}>
-        <h3 className={css.sidebar__heading}>City</h3>
-        <ul className={css["sidebar__link-list"]}>
+      <section className={css.SideBar__section}>
+        <h3 className={css.SideBar__heading}>City</h3>
+        <ul className={css.SideBar__linkList}>
           {cities.map((city) => {
             const queryString = buildParamsString("query", { city });
             return (
               <li key={`${city}-city-filter-link`}>
                 <Link
                   className={
-                    css[
-                      `sidebar__link${
-                        query && query.includes(`"city":"${city}"`)
-                          ? "--active"
-                          : ""
-                      }`
-                    ]
+                    query && query.includes(`"city":"${city}"`)
+                      ? css["SideBar__link--active"]
+                      : ""
                   }
                   to={queryString}
                 >
@@ -116,17 +117,15 @@ const SideBar = ({ cities }) => {
           })}
         </ul>
       </section>
-      <section className={css.sidebar__section}>
-        <h3 className={css.sidebar__heading}>Price</h3>
-        <ul className={css["sidebar__link-list"]}>
+      <section className={css.SideBar__section}>
+        <h3 className={css.SideBar__heading}>Price</h3>
+        <ul className={css.SideBar__linkList}>
           <li>
             <Link
               className={
-                css[
-                  `sidebar__link${
-                    sort && sort.includes(`"price":1`) ? "--active" : ""
-                  }`
-                ]
+                sort && sort.includes(`"price":1`)
+                  ? css["SideBar__link--active"]
+                  : ""
               }
               to={buildParamsString("sort", { price: 1 })}
             >
@@ -136,11 +135,9 @@ const SideBar = ({ cities }) => {
           <li>
             <Link
               className={
-                css[
-                  `sidebar__link${
-                    sort && sort.includes(`"price":-1`) ? "--active" : ""
-                  }`
-                ]
+                sort && sort.includes(`"price":-1`)
+                  ? css["SideBar__link--active"]
+                  : ""
               }
               to={buildParamsString("sort", { price: -1 })}
             >
@@ -150,7 +147,7 @@ const SideBar = ({ cities }) => {
         </ul>
       </section>
       <button
-        className={css["sidebar__reset-button"]}
+        className={css.SideBar__resetButton}
         type="button"
         onClick={handleReset}
       >

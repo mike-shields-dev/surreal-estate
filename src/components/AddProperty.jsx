@@ -67,9 +67,9 @@ const AddProperty = ({ userId }) => {
   };
 
   return (
-    <div className={css["add-property"]} title="add property">
+    <div className={css.AddProperty} title="add property">
       <form
-        className={css["add-property__form"]}
+        className={css.AddProperty__form}
         name="add property"
         onSubmit={handleAddProperty}
       >

@@ -23,8 +23,8 @@ const Properties = ({ userId }) => {
   return (
     <>
       <SideBar {...{ cities }} />
-      <div className={css.properties} title="properties">
-        <div className={css.properties__grid}>
+      <div className={css.Properties} title="properties">
+        <div className={css.Properties__grid}>
           {properties.map((property) => (
             <PropertyCard
               favourites={favourites}

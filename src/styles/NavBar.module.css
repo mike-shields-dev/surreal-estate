@@ -18,31 +18,31 @@ nav {
 }
 
 @media (max-width: 450px) {
-  .navbar__brand-name {
+  .NavBar__brandName {
     width: 0;
     height: 0;
     overflow: hidden;
   }
 }
 
-.navbar__brand-logo {
+.NavBar__brandLogo {
   color: var(--clr-brand);
   min-width: 1rem;
 }
 
-.navbar__brand-name {
+.NavBar__brandName {
   font-size: 1rem;
   word-wrap: no-wrap;
 }
 
-.navbar__links-list {
+.NavBar__LinksList {
   display: flex;
   margin: 0;
   padding: 0;
   font-size: 0.85rem;
 }
 
-.navbar__links-list a {
+.NavBar__LinksList a {
   display: grid;
   place-items: center;
   margin: 0 0.5rem;

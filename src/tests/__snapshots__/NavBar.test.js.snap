@@ -7,7 +7,7 @@ exports[`Navbar matches snapshot 1`] = `
       class="navbar__brand"
     >
       <svg
-        class="navbar__brand-logo"
+        class="NavBar__brandLogo"
         fill="currentColor"
         height="1em"
         stroke="currentColor"
@@ -24,14 +24,14 @@ exports[`Navbar matches snapshot 1`] = `
         />
       </svg>
       <h1
-        class="navbar__brand-name"
+        class="NavBar__brandName"
         title="brand name"
       >
         Surreal Estate
       </h1>
     </div>
     <ul
-      class="navbar__links-list"
+      class="NavBar__LinksList"
     >
       <li>
         <a

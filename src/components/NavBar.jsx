@@ -8,15 +8,12 @@ const NavBar = ({ userId, children }) => {
   return (
     <nav>
       <div className={css.navbar__brand}>
-        <FaFortAwesome
-          className={css["navbar__brand-logo"]}
-          title="brand logo"
-        />
-        <h1 className={css["navbar__brand-name"]} title="brand name">
+        <FaFortAwesome className={css.NavBar__brandLogo} title="brand logo" />
+        <h1 className={css.NavBar__brandName} title="brand name">
           Surreal Estate
         </h1>
       </div>
-      <ul className={css["navbar__links-list"]}>
+      <ul className={css.NavBar__LinksList}>
         <li>
           <NavLink to="/properties" draggable="false">
             View Properties

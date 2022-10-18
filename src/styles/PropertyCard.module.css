@@ -1,4 +1,4 @@
-.property-card {
+.PropertyCard {
   background-color: var(--bg-clr-light);
   display: grid;
   font-size: 0.825rem;
@@ -7,7 +7,7 @@
   text-align: left;
 }
 
-.property-card__header {
+.PropertyCard__header {
   background: var(--bg-clr-mid);
   color: var(--clr-brand);
   display: grid;
@@ -16,39 +16,39 @@
   place-content: center;
 }
 
-.property-card__main {
+.PropertyCard__main {
   display: grid;
   gap: 0.5em;
   padding: 0.25rem;
 }
 
-.property-card__title {
+.PropertyCard__title {
   font-size: 0.825rem;
 }
 
-.property-card__type-and-location {
+.PropertyCard__description {
   font-style: italic;
 }
 
-.property-card__bathrooms {
+.PropertyCard__bathrooms {
   display: flex;
   gap: 0.5em;
 }
 
-.property-card__bedrooms {
+.PropertyCard__bedrooms {
   display: flex;
   gap: 0.5em;
 }
 
-.property-card__bed-icon {
+.PropertyCard__bed-icon {
   font-size: 1rem;
 }
 
-.property-card__currency {
+.PropertyCard__currency {
   font-weight: 600;
 }
 
-.property-card__mailto {
+.PropertyCard__mailto {
   align-self: flex-end;
   background-color: rgb(118, 72, 123);
   color: var(--font-clr-light);
@@ -60,6 +60,6 @@
   text-transform: capitalize;
 }
 
-.property-card__mail-icon {
+.PropertyCard__mailtoIcon {
   font-size: 1.25em;
 }

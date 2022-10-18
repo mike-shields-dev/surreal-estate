@@ -1,4 +1,4 @@
-.sidebar {
+.SideBar {
   color: var(--font-clr-light);
   min-height: 100%;
   position: fixed;
@@ -9,23 +9,23 @@
   z-index: 1;
 }
 
-.sidebar--open {
+.SideBar--open {
   transform: translateX(10rem);
 }
 
-.sidebar--closed {
+.SideBar--closed {
   transform: translateX(26rem);
 }
 
-.sidebar *:not(a) {
+.SideBar *:not(a) {
   transition: all 500ms ease;
 }
 
-.sidebar--closed > *:not(.sidebar__toggle-button) {
+.SideBar--closed > *:not(.SideBar__toggleButton) {
   opacity: 0;
 }
 
-.sidebar__toggle-button {
+.SideBar__toggleButton {
   background: none;
   position: sticky;
   top: 0;
@@ -38,45 +38,45 @@
   width: 2rem;
 }
 
-.sidebar__icon {
+.SideBar__toggleIcon {
   transition: all 500ms ease;
 }
 
-.sidebar__icon--open {
+.SideBar__toggleIcon--open {
   transform: rotateZ(45deg);
 }
 
-.sidebar__icon--closed {
+.SideBar__toggleIcon--closed {
   transform: rotateZ(0deg);
 }
 
-.sidebar__section {
+.SideBar__section {
   display: grid;
   gap: 1rem;
   padding: 2rem;
   border-bottom: 1px solid var(--bg-clr-dark);
 }
 
-.sidebar__section:first-of-type {
+.SideBar__section:first-of-type {
   padding-top: 0;
 }
 
-.sidebar__link-list {
+.SideBar__linkList {
   display: grid;
   gap: 1rem;
 }
 
-.sidebar__link--active {
+.SideBar__link--active {
   color: var(--font-clr-light);
   font-weight: bold;
   text-decoration: underline;
 }
 
-.sidebar__form {
+.SideBar__search {
   position: relative;
 }
 
-.sidebar__form label {
+.SideBar__search label {
   position: absolute;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -86,11 +86,11 @@
   width: 1px;
 }
 
-.sidebar__form input {
+.SideBar__search input {
   margin-right: 2rem;
 }
 
-.sidebar__form button {
+.SideBar__searchButton {
   display: grid;
   place-content: center;
   position: absolute;
@@ -102,17 +102,7 @@
   top: 0;
 }
 
-.sidebar__form button span {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
-
-.sidebar__reset-button {
+.SideBar__resetButton {
   font-size: 1rem;
   margin: 2rem 2rem;
   color: var(--font-clr-dark);

@@ -12,24 +12,24 @@ const PropertyCard = ({
   setFavourites,
 }) => {
   return (
-    <div className={css["property-card"]}>
-      <header className={css["property-card__header"]}>
+    <div className={css.PropertyCard}>
+      <header className={css.PropertyCard__header}>
         <FaFortAwesome title="brand logo" />
       </header>
-      <main className={css["property-card__main"]}>
-        <h2 className={css["property-card__title"]}>{title}</h2>
-        <p className={css["property-card__type-and-location"]}>
+      <main className={css.PropertyCard__main}>
+        <h2 className={css.PropertyCard__title}>{title}</h2>
+        <p className={css.PropertyCard__description}>
           <span>{type}</span> - <span>{city}</span>
         </p>
-        <p className={css["property-card__bathrooms"]}>
+        <p className={css.PropertyCard__bathrooms}>
           <FaBath title="bath icon" /> {bathrooms}
         </p>
-        <p className={css["property-card__bedrooms"]}>
-          <FaBed className={css["property-card__bed-icon"]} title="bed icon" />{" "}
+        <p className={css.PropertyCard__bedrooms}>
+          <FaBed className={css["PropertyCard__bed-icon"]} title="bed icon" />{" "}
           {bedrooms}
         </p>
         <p>
-          <span className={css["property-card__currency"]}>£</span> {price}
+          <span className={css.PropertyCard__currency}>£</span> {price}
         </p>
       </main>
       <a
