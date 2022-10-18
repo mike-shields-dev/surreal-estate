@@ -32,6 +32,13 @@ const SideBar = ({ cities }) => {
   };
 
   const handleSearchChange = (event) => {
+    if (!event.target.value) {
+      navigate(
+        buildParamsString("query", {
+          title: { $regex: ".*" },
+        })
+      );
+    }
     setTitleSearch(event.target.value);
   };
 
