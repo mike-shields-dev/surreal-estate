@@ -5,7 +5,7 @@ axios.defaults.baseURL = baseUrl;
 
 const getProperties = (params = "") => {
   return axios
-    .get(`/PropertyListing${params}`)
+    .get(`PropertyListing${params}`)
     .then((res) => res.data)
     .catch((err) => console.log(err));
 };
