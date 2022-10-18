@@ -37,17 +37,11 @@ const SideBar = ({ cities }) => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    let newUrlParamsString;
-    if (titleSearch) {
-      newUrlParamsString = buildParamsString("query", {
-        title: { $regex: titleSearch },
-      });
-    } else {
-      newUrlParamsString = buildParamsString("query", {
-        title: { $regex: ".*" },
-      });
-    }
-    navigate(newUrlParamsString);
+    navigate(
+      buildParamsString("query", {
+        title: { $regex: titleSearch || ".*" },
+      })
+    );
   };
 
   const handleReset = () => {
