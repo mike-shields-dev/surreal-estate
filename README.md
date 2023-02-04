@@ -1,6 +1,6 @@
 # Surreal Estate
 
-:zap: Live site [here](https://63de933f2f2b733e7f8b6039--command-shift-surreal-estate.netlify.app)! :zap:
+:zap: Live site [here](https://command-shift-surreal-estate.netlify.app/properties)! :zap:
 
 ## Getting Started with Create React App
 
